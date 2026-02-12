@@ -28,6 +28,14 @@
           "blocs del codi textual _",
           "codi textual dels blocs _ formatats _"
         ]
+      },
+      "zh_CN": {
+        "name": "积木与代码互转库",
+        "description": "积木与代码(伪Lisp代码)互转",
+        "searchData": [
+          "将伪Lisp代码 _ 转换为积木",
+          "将积木/程序 _ 转换为代码 _"
+        ]
       }
     }
   },
@@ -139,8 +147,7 @@
         ]
       },
       "ca": {
-        "name": "Colors",
-        "description": "Modifica, barreja i obté transicions de colors."
+        "name": "Colors"
       },
       "es": {
         "name": "Colores"
@@ -160,56 +167,19 @@
     }
   },
   {
-    "fileName": "tables_module.xml",
-    "name": "Tables",
-    "description": "Create, select, filter, order, transform, extend and analyze tabular data sets with powerful functions. Modeled after Pyret's Tables, see https://pyret.org/docs/latest/tables.html. Thanks to Shriram Krishnamurthi for his inspiration, feedback and advice. Example project (under development): https://snap.berkeley.edu/versions/dev/snap.html#present:Username=jens&ProjectName=Shriram%20Tables&editMode",
-    "searchData": [
-      "table from _",
-      "header of _",
-      "cells of _",
-      "select _ from _",
-      "sieve _ using _ _",
-      "order _ _",
-      "transform _ using _ _",
-      "extend _ using _ _",
-      "running sum of _",
-      "difference of _",
-      "difference from _ of _",
-      "running mean of _",
-      "running min of _",
-      "running max of _",
-      "running reduce _",
-      "running fold _ _",
-      "pipe _",
-      "let _ then report _"
-    ],
-    "categories": [
-      "control",
-      "operators",
-      "other",
-      "Tables"
-    ]
-  },
-  {
     "fileName": "neural_networks_module.xml",
     "name": "Neural Networks",
     "description": "Classify data vectors using neural networks, train and validate your own deep neural models",
     "searchData": [
-      "plot bars _ _",
-      "render neural model _ _",
-      "normalize table _",
-      "normalization for table _",
-      "partition table _ by _",
-      "generate _ for _ in _ _",
-      "clone _ _",
+      "plot bars _ fill _ center _ clear _",
       "object _",
+      "clone _ _",
       "new neural network _",
+      "classify _ with network _",
       "_ network _ on _",
-      "_ _ with network _",
       "_ of network _",
-      "_ of network _ to _",
-      "blockify _",
-      "new perceptron sprite"
+      "render neural model _ _",
+      "_ of network _ to _"
     ],
     "categories": [
       "pen",
@@ -224,49 +194,11 @@
           "klone _ _"
         ],
         "searchData": [
-          "male Balken _ _\rca",
-          "male neurales Modell _ _\rca",
-          "normalisiere Tabelle _\rca",
-          "Normalisierung für Tabelle _\rca",
-          "teile Tabelle _ im Verhältnis _\rca",
-          "generiere _ für _ in _ _",
-          "klone _ _\rca",
-          "Objekt _\rca",
-          "neues neuronales Netzwerk _\rca",
-          "_ Netzwerk _ mit _\rca",
-          "_ _ mit Netzwerk _\rca",
-          "_ von Netzwerk _\rca",
-          "_ von Netzwerk _ auf _\rca",
-          "blockifiziere _",
-          "neues Perzeptron Objekt"
+          "male Balken _ gefüllt _ zentriert _ wische _",
+          "Objekt _",
+          "klone _ _"
         ]
-      },
-      "ca": {
-        "name": "Xarxes Neuronals",
-        "description": "Classifica dades vectoritzades utilitzant xarxes neuronals. Entrena i valida els teus propis models interns."
       }
-    }
-  },
-  {
-    "fileName": "edge AI.xml",
-    "name": "Edge Computer Vision",
-    "description": "Detect hand, face and body features or gestures by using Google's AI Edge computer vision API",
-    "searchData": [
-      "hand landmarks on _",
-      "hand handedness on _",
-      "hand gesture on _",
-      "finger _ in hand landmarks _",
-      "face landmarks on _",
-      "feature _ in face landmarks _",
-      "face bounds on _",
-      "body landmarks on _",
-      "feature _ in body landmarks _",
-      "feature _ touching _"
-    ],
-    "categories": [
-      "Edge Computer Vision"
-    ],
-    "translations": {
     }
   },
   {
@@ -945,10 +877,6 @@
         "searchData": [
           "Neigung _\rar"
         ]
-      },
-      "ca": {
-        "name": "Sensors de dispositius mòbils",
-        "description": "Lectures dels sensors de mòbils i tauletes."
       }
     }
   },
@@ -976,14 +904,11 @@
   {
     "fileName": "s4aConn.xml",
     "name": "S4A Connector",
-    "description": "Snap for All firmata boards Connector, Adding all Snap4Arduino features. Connecting Snap! to any Firmata compatible board: UNO, Nano, Mega, Leonardo, Micro, Due, 101, ESP8266, NodeMCU... to dynamically control their functionalities. Firmata firmware uploaded is required.",
+    "description": "Snap for All firmata boards Connector. Connecting Snap! to any Firmata compatible board: UNO, Nano, Mega, Leonardo, Micro, Due, 101, ESP8266, NodeMCU... to dynamically control their functionalities. Firmata firmware uploaded is required.",
     "searchData": [
-      "board connected ?",
-      "set digital pin _ to _",
-      "set pin _ to value _",
-      "set servo _ to _",
-      "analog reading _",
-      "digital reading _"
+      "set digital pin %&apos;pin&apos; to %&apos;value&apos;",
+      "set pin %&apos;pin&apos; to value %&apos;value&apos;",
+      "set servo %&apos;pin&apos; to %&apos;value&apos;"
     ],
     "categories": [
       "S4A Connector"
@@ -991,15 +916,7 @@
     "translations": {
       "ca": {
         "name": "Connector S4A",
-        "description": "Connector de Snap! a per totes les plaques compatibles amb firmata: UNO, Nano, Mega, Leonardo, Micro, Due, 101, ESP8266, NodeMCU... per controlar dinàmicament les seves funcionalitats. Necessita que la placa tingui el Firmata carregat prèviament.",
-        "searchData": [
-          "placa connectada?\res",
-          "posa el pin digital _ a _\res",
-          "posa el pin _ al valor _\res",
-          "posa el servo _ a _\res",
-          "lectura analògica _\res",
-          "lectura digital _\res"
-        ]
+        "description": "Connector de Snap! a per totes les plaques compatibles amb firmata: UNO, Nano, Mega, Leonardo, Micro, Due, 101, ESP8266, NodeMCU... per controlar dinàmicament les seves funcionalitats. Necessita que la placa tingui el Firmata carregat prèviament."
       }
     }
   },
@@ -1009,26 +926,26 @@
     "description": "Generate 3D geometry by extruding points, lines or polygons along a path in 3D space.",
     "searchData": [
       "reset",
-      "set _ scale to _",
-      "set shape offset to _",
       "go home",
-      "go to _",
-      "stop extruding",
       "move _ steps",
-      "change relative _ by _",
+      "go to _",
       "set _ position to _",
-      "_ position",
       "change absolute _ by _",
+      "change relative _ by _",
+      "_ position",
       "rotate _ by _",
       "set _ rotation to _",
-      "push position",
-      "_ rotation",
       "point to _",
+      "_ rotation",
       "start extruding _",
+      "stop extruding",
       "log sprite positions in _",
       "shape points",
+      "set shape offset to _",
+      "set _ scale to _",
       "change _ scale by _",
       "_ scale",
+      "push position",
       "pop position",
       "beetle view"
     ],
@@ -1066,26 +983,26 @@
         ],
         "searchData": [
           "reinicia",
-          "fixa l'escala de _ a _",
-          "fixa el desplaçament de la base a _",
           "torna a casa",
-          "vés a _",
-          "deixa d'extrudir",
           "mou-te _ passos",
-          "mou-te en la _ pròpia _ passos",
+          "vés a _",
           "fixa la coordenada _ a _",
-          "posició _",
           "augmenta la coordenada _ en _",
+          "mou-te en la _ pròpia _ passos",
+          "posició _",
           "gira sobre _ propi en _ graus",
           "fixa l'angle _ propi a _",
-          "enregistra posició actual",
-          "angle _",
           "apunta cap a _",
+          "angle _",
           "comença a extrudir amb _ de base",
+          "deixa d'extrudir",
           "enregistra les posicions de la tortuga _",
           "punts de la base",
+          "fixa el desplaçament de la base a _",
+          "fixa l'escala de _ a _",
           "augmenta l'escala de _ en _",
           "escala de _",
+          "enregistra posició actual",
           "torna a la posició enregistrada",
           "vista de l'escarbat"
         ]
@@ -1272,8 +1189,6 @@
           "sprich _ mit _ Aussprache _ und Höhe _ Geschwindigkeit _\rpt",
           "sprich _ mit _ Aussprache _ und Höhe _ Geschwindigkeit _ und warte\rpt",
           "erkenne Gesprochenes\rar",
-          "Sprachantwort begonnen?",
-          "aktiviere Sprachausgabe _",
           "stoppe Spracherkennung"
         ]
       },
@@ -1304,8 +1219,6 @@
       "speak _ with _ accent  and pitch _ rate _",
       "speak _ with _ accent  and pitch _ rate _ and wait",
       "recognize speech",
-      "started speech response?",
-      "activate speech synthesis _",
       "stop speech recognition"
     ],
     "categories": [
@@ -2216,7 +2129,7 @@
       }
     },
     "searchData": [
-      "plot bars _ _"
+      "plot bars _ fill _ center _ clear _"
     ],
     "categories": [
       "pen"
@@ -2312,19 +2225,18 @@
     "name": "Declare & Initialize Script Variables",
     "description": "Declare and initialize multiple script variables",
     "searchData": [
-      "let _",
-      "let _ then report _"
+      "let _"
     ],
     "categories": [
       "other"
     ],
     "translations": {
       "de": {
-        "name": "Skriptvariablen deklarieren und initialisieren",
-        "description": "Mehrere Skriptvariablen auf einmal anlegen und mit Werten initialisieren",
         "searchData": [
-          "deklariere _",
-          "deklariere _ dann berichte _"
+          "deklariere _"
+        ],
+        "searchData": [
+          "deklariere _"
         ]
       },
       "ca": {
@@ -3190,27 +3102,6 @@
     "name": "~"
   },
   {
-    "fileName": "tutorial_module.xml",
-    "name": "Tutorials",
-    "description": "Position and scale the tutorial window",
-    "searchData": [
-      "when _ bounds change",
-      "position tutorial at _ _",
-      "set tutorial size to _ %",
-      "tutorial size",
-      "current editor _",
-      "exit tutorial"
-    ],
-    "categories": [
-      "tutorials"
-    ],
-    "translations": {
-      "ca": {
-        "description": "Posiciona i ajusta la mida de la finstra del tutorial."
-      }
-    }
-  },
-  {
     "fileName": "metaprogramming_module.xml",
     "name": "Metaprogramming",
     "description": "Analyze, transform and generate blocks and scripts",
@@ -3287,10 +3178,10 @@
     "name": "(EDC) Fancy Text",
     "description": "Text formatting and basic fraction support for SAY and THINK blocks.",
     "searchData": [
-      "fancy think _ size: _ max width: _ max height: _ color: _ in my _ for _ seconds",
-      "fancy think _ size: _ max width: _ max height: _ color: _ in my _",
-      "fancy say _ size: _ max width: _ max height: _ color: _ in my _ for _ seconds",
-      "fancy say _ size: _ max width: _ max height: _ color: _ in my _",
+      "fancy think _ size: _ max width: _ color: _ in my _ for _ seconds",
+      "fancy think _ size: _ max width: _ color: _ in my _",
+      "fancy say _ size: _ max width: _ color: _ in my _ for _ seconds",
+      "fancy say _ size: _ max width: _ color: _ in my _",
       "fancy text costume _ size: _ max width: _ color: _ align: _ font: _"
     ],
     "categories": [

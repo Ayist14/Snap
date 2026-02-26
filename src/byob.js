@@ -106,13 +106,14 @@ ToggleButtonMorph, IDE_Morph, MenuMorph, ToggleElementMorph, fontHeight, isNil,
 StageMorph, SyntaxElementMorph, CommentMorph, localize, CSlotMorph, Variable,
 MorphicPreferences, SymbolMorph, CursorMorph, VariableFrame, BooleanSlotMorph,
 WatcherMorph, XML_Serializer, SnapTranslator, SnapExtensions, ColorSlotMorph,
-ArgLabelMorph, embedMetadataPNG, ArgMorph, RingMorph, InputList, MultiArgMorph*/
+ArgLabelMorph, embedMetadataPNG, ArgMorph, RingMorph, InputList, MultiArgMorph,
+ADT_SlotMorph*/
 
 /*jshint esversion: 11*/
 
 // Global stuff ////////////////////////////////////////////////////////
 
-modules.byob = '2026-February-21';
+modules.byob = '2026-February-26';
 
 // Declarations
 
@@ -1278,7 +1279,7 @@ CustomCommandBlockMorph.prototype.refresh = function (aDefinition, offset) {
         }
         this.setSpec(newSpec, def);
         this.fixLabelColor();
-    } else { // update all input slots' drop-downs
+    } else { // update all input slots' drop-downs and all ADT slots
         this.inputs().forEach((inp, i) => {
             if (inp instanceof ArgMorph &&
                     !(inp instanceof TemplateSlotMorph)) {
@@ -1289,6 +1290,8 @@ CustomCommandBlockMorph.prototype.refresh = function (aDefinition, offset) {
                 inp instanceof MultiArgMorph
             ) {
                 inp.setChoices.apply(inp, def.inputOptionsOfIdx(i));
+            } else if (inp instanceof ADT_SlotMorph) {
+                inp.setContents(def.defaultValueOfInputIdx(i));
             }
         });
     }
@@ -1301,6 +1304,8 @@ CustomCommandBlockMorph.prototype.refresh = function (aDefinition, offset) {
     this.inputs().forEach((inp, idx) => {
         if (inp instanceof TemplateSlotMorph && inp.contents() === '\xa0') {
             inp.setContents(def.inputNames()[idx]);
+        } else if (inp instanceof ADT_SlotMorph) {
+            inp.setContents(def.defaultValueOfInputIdx(idx));
         } else if (inp instanceof MultiArgMorph) {
             inp.setIrreplaceable(def.isIrreplaceableInputIdx(idx));
             if (!['%scriptVars', '%receive', '%send', '%elseif'].includes(
@@ -1414,7 +1419,8 @@ CustomCommandBlockMorph.prototype.refreshDefaults = function (definition) {
         if (inp instanceof InputSlotMorph ||
             inp instanceof BooleanSlotMorph ||
             inp instanceof TemplateSlotMorph ||
-            inp instanceof ColorSlotMorph
+            inp instanceof ColorSlotMorph ||
+            inp instanceof ADT_SlotMorph
         ) {
             inp.setContents(
                 (definition || this.definition).defaultValueOfInputIdx(idx)
@@ -4113,6 +4119,10 @@ BlockLabelFragment.prototype.defTemplateSpecFragment = function () {
         suff = ' $turtleOutline';
     } else if (this.type === '%clr') {
         suff = ' $pipette';
+    } else if (this.type === '%adt') {
+        suff = ' {}' + (
+            this.defaultValue ? ' = ' + this.defaultValue.toString() : ''
+        );
     } else if (contains(
             ['%cmdRing', '%repRing', '%predRing', '%anyUE', '%boolUE'],
             this.type
@@ -4845,17 +4855,19 @@ InputSlotDialogMorph.prototype.createSlotTypeButtons = function () {
     defLabel.refresh = () => {
         if (this.isExpanded && contains(
                 [
-                    '%s', '%n', '%txt', '%anyUE', '%b', '%boolUE',
-                    '%mlt', '%code', '%upvar', '%parameter', '%clr'
+                    '%s', '%n', '%txt', '%anyUE', '%b', '%boolUE', '%adt',
+                    '%mlt', '%code', '%upvar', '%parameter', '%clr', '%mult%adt'
                 ],
                 this.fragment.type
             )) {
             defLabel.changed();
-            defLabel.text = ['%upvar', '%parameter'].includes(
-                this.fragment.type
-            ) ?
-                localize('Default Name:')
-                : localize('Default Value:');
+            if (this.fragment.type === '%adt') {
+                defLabel.text = localize('ADT Type:');
+            } else if (['%upvar', '%parameter'].includes(this.fragment.type)) {
+                defLabel.text = localize('Default Name:');
+            } else {
+                defLabel.text = localize('Default Value:');
+            }
             defLabel.fixLayout();
             defLabel.rerender();
             defLabel.show();
@@ -4873,7 +4885,7 @@ InputSlotDialogMorph.prototype.createSlotTypeButtons = function () {
     defInput.refresh = () => {
         if (this.isExpanded && contains(
             ['%s', '%n', '%txt', '%anyUE', '%mlt', '%code', '%upvar',
-                '%parameter'],
+                '%parameter', '%adt', '%mult%adt'],
             this.fragment.type
         )) {
             defInput.show();
@@ -5258,8 +5270,8 @@ InputSlotDialogMorph.prototype.addSlotsMenu = function () {
         menu.addMenu(
             (contains(
                 ['%mlt', '%code', '%obj', '%scriptVars', '%receive', '%send',
-                    '%elseif', '%upvar', '%mult%upvar', '%parameter',
-                    '%mult%parameter'],
+                    '%elseif', '%upvar', '%mult%upvar', '%parameter', '%adt',
+                    '%mult%parameter', '%mult%adt'],
                 this.fragment.type
             ) ? on : off) +
             localize('special'),
@@ -5312,6 +5324,7 @@ InputSlotDialogMorph.prototype.specialSlotsMenu = function () {
     addSpecialSlotType('code', '%code');
     addSpecialSlotType('object', '%obj');
     addSpecialSlotType('parameter', '%parameter');
+    addSpecialSlotType('ADT', '%adt');
     menu.addLine();
     addSpecialSlotType('variables', '%scriptVars');
     addSpecialSlotType('receivers', '%receive');

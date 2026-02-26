@@ -32,6 +32,8 @@
         * include a ring entry named underscore + morph in data to specify a dynamic view
         * new "cst_morph(cst)" extension for specifying custom ADT visualizations
         * include an entry named underscore + field in the data to specify a custom data type
+        * integrated type-inferral for user defined data types
+        * new ADT input slot for blocks
     * domain-specific languages (DSL) support
         * support for dynamic dropdown menus and read-only settings in variadic input slots
         * support for variadic upvars in custom blocks
@@ -101,6 +103,9 @@
     * Chinese, thank you, @Ayist14 !
     * Catalan, thanks, Joan!
     * German
+
+### 2026-02-26
+* blocks, byob, store: new ADT type input slot
 
 ### 2026-02-25
 * updated neural networks, tables and shapes libraries with new type annotation format (underscore-type string)

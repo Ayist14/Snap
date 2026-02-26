@@ -44,6 +44,7 @@
             ScriptsMorph
             SyntaxElementMorph
                 ArgMorph
+                    ADT_SlotMorph
                     ArgLabelMorph
                     BooleanSlotMorph
                     ColorSlotMorph
@@ -100,6 +101,7 @@
         ArrowMorph
         TextSlotMorph
         ColorSlotMorph
+        ADT_SlotMorph
         TemplateSlotMorph
         BlockHighlightMorph
         MultiArgMorph
@@ -162,7 +164,7 @@ CustomHatBlockMorph, GrayPaletteMorph, ZOOM*/
 
 // Global stuff ////////////////////////////////////////////////////////
 
-modules.blocks = '2026-February-25';
+modules.blocks = '2026-February-26';
 
 var SyntaxElementMorph;
 var BlockMorph;
@@ -1185,6 +1187,9 @@ SyntaxElementMorph.prototype.labelParts = {
     '%clr': {
         type: 'color'
     },
+    '%adt': {
+        type: 'adt'
+    },
     '%br': {
         type: 'break'
     },
@@ -1593,6 +1598,7 @@ SyntaxElementMorph.prototype.revertToDefaultInput = function (arg, noValues) {
             if (!noValues &&
                 (deflt instanceof InputSlotMorph ||
                 deflt instanceof BooleanSlotMorph ||
+                deflt instanceof ADT_SlotMorph ||
                 deflt instanceof ColorSlotMorph)
             ) {
                 deflt.setContents(
@@ -1902,6 +1908,7 @@ SyntaxElementMorph.prototype.setLabelColor = function (
             morph.setColor(textColor);
         } else if (morph instanceof MultiArgMorph
                 || morph instanceof ArgLabelMorph
+                || morph instanceof ADT_SlotMorph
                 || (morph instanceof SymbolMorph && !morph.isProtectedLabel)
                 || (morph instanceof InputSlotMorph
                     && morph.isReadOnly)) {
@@ -2041,6 +2048,9 @@ SyntaxElementMorph.prototype.labelPart = function (spec) {
             break;
         case 'color':
             part = new ColorSlotMorph();
+            break;
+        case 'adt':
+            part = new ADT_SlotMorph();
             break;
         case 'break':
             part = new Morph();
@@ -3142,6 +3152,7 @@ BlockSymbolMorph.prototype.getShadowRenderColor =
     %cl     - C-shaped, auto-reifying, rejects reporters
     %cla    - C-shaped with loop arrows, auto-reifying, rejects reporters
     %clr    - interactive color slot
+    %adt    - chameleon colored oval slot displaying a typestring
     %t      - inline variable reporter template
     %anyUE  - white rectangular type-in slot, unevaluated if replaced
     %boolUE - chameleon colored hexagonal slot, unevaluated if replaced
@@ -11574,7 +11585,7 @@ InputSlotMorph.prototype.dynamicContents = function () {
     // fully evaluate the block's inputs, including embedded reporters, if any
     vars = new InputList(block, names);
 
-    // evaluate the script that makes the menu
+    // evaluate the script that reports the dynamic content
     stage.threads.startProcess(
         script,
         rcvr,
@@ -14234,6 +14245,135 @@ ColorSlotMorph.prototype.render = function (ctx) {
 ColorSlotMorph.prototype.drawRectBorder =
     InputSlotMorph.prototype.drawRectBorder;
 
+// ADT_SlotMorph //////////////////////////////////////////////////////
+
+/*
+    I am an oval-shaped input slot for a user-defined data structure (ADT).
+    I can display a type-string indicating the kind of data I'm expecting.
+    I am not directly user-editable.
+
+    my block spec is %adt
+
+    evaluate() returns my typestring or "ADT"
+*/
+
+// ADT_SlotMorph  inherits from ArgMorph:
+
+ADT_SlotMorph.prototype = new ArgMorph();
+ADT_SlotMorph.prototype.constructor = ADT_SlotMorph;
+ADT_SlotMorph.uber = ArgMorph.prototype;
+
+// ADT_SlotMorph  instance creation:
+
+function ADT_SlotMorph(typeString) {
+    this.init(typeString);
+}
+
+ADT_SlotMorph.prototype.init = function (typeString) {
+    var contents = new InputSlotStringMorph('');
+    contents.fontSize = this.fontSize;
+    contents.isItalic = true;
+    contents.isShowingBlanks = false;
+    contents.shadowOffset = new Point(1, 1);
+    ADT_SlotMorph.uber.init.call(this);
+    this.add(contents);
+    contents.isEditable = false;
+    contents.isDraggable = false;
+    contents.disableSelecting();
+    this.setContents(typeString || 'ADT');
+    this.fixLayout();
+};
+
+ADT_SlotMorph.prototype.getSpec = function () {
+    return '%adt';
+};
+
+ADT_SlotMorph.prototype.contents = InputSlotMorph.prototype.contents;
+
+ADT_SlotMorph.prototype.setContents = function (typeString = 'ADT') {
+    var cnts = this.contents(),
+        block = this.parentThatIsA(BlockMorph); // could be inside a multi-arg
+    cnts.text = typeString;
+    cnts.fixLayout();
+    if (block) {
+        block.fixLabelColor();
+    }
+};
+
+ADT_SlotMorph.prototype.evaluate = function () {
+    return this.contents().text;
+};
+
+ADT_SlotMorph.prototype.isEmptySlot = function () {
+    return true;
+};
+
+ADT_SlotMorph.prototype.fixLayout = function () {
+    var width, height,
+        contents = this.contents(),
+        tp = this.topBlock();
+
+    height = contents.height() + this.edge * 2;
+    width = contents.width() + height;
+    this.bounds.setExtent(new Point(width, height));
+
+    contents.setPosition(new Point(
+        height * 0.4,
+        this.edge
+    ).add(this.position()));
+
+    if (this.parent && this.parent.fixLayout) {
+        tp.fullChanged();
+        this.parent.fixLayout();
+        tp.fullChanged();
+    }
+};
+
+ADT_SlotMorph.prototype.render = function (ctx) {
+    var borderColor,
+        r;
+
+    if (this.parent) {
+        borderColor = this.parent.color;
+    } else {
+        borderColor = new Color(120, 120, 120);
+    }
+    ctx.fillStyle = borderColor.darker().toString();
+
+    // cache my border colors
+    this.cachedClr = borderColor.toString();
+    this.cachedClrBright = borderColor.lighter(this.contrast)
+        .toString();
+    this.cachedClrDark = borderColor.darker(this.contrast).toString();
+
+    r = Math.max((this.height() - (this.edge * 2)) / 2, 0);
+    ctx.beginPath();
+    ctx.arc(
+        r + this.edge,
+        r + this.edge,
+        r,
+        radians(90),
+        radians(-90),
+        false
+    );
+    ctx.arc(
+        this.width() - r - this.edge,
+        r + this.edge,
+        r,
+        radians(-90),
+        radians(90),
+        false
+    );
+    ctx.closePath();
+    ctx.fill();
+    if (!MorphicPreferences.isFlat) {
+        this.drawRoundBorder(ctx);
+    }
+};
+
+ADT_SlotMorph.prototype.drawRoundBorder =
+    InputSlotMorph.prototype.drawRoundBorder;
+
 // BlockHighlightMorph /////////////////////////////////////////////////
 
 /*
@@ -15138,7 +15278,7 @@ MultiArgMorph.prototype.slotSpecFor = function (index) {
 };
 
 MultiArgMorph.prototype.defaultValueFor = function (index) {
-    var dta = this.defaultValueDataFor(index);
+    var dta = this.defaultValueDataFor(this.slotSpec === '%adt' ? 0 : index);
     return this.parentThatIsA(BlockMorph)?.definition?.selector ?
         localize(dta) : dta;
 };

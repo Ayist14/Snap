@@ -57,13 +57,13 @@ BlockMorph, ArgMorph, InputSlotMorph, TemplateSlotMorph, CommandSlotMorph, ZOOM,
 FunctionSlotMorph, MultiArgMorph, ColorSlotMorph, nop, CommentMorph, isNil,
 localize, SVG_Costume, MorphicPreferences, Process, isSnapObject, Variable,
 SyntaxElementMorph, BooleanSlotMorph, normalizeCanvas, contains, Scene,
-Project, CustomHatBlockMorph, SnapVersion*/
+Project, CustomHatBlockMorph, SnapVersion, ADT_SlotMorph*/
 
 /*jshint esversion: 11*/
 
 // Global stuff ////////////////////////////////////////////////////////
 
-modules.store = '2026-February-18';
+modules.store = '2026-February-26';
 
 // XML_Serializer ///////////////////////////////////////////////////////
 /*
@@ -1695,7 +1695,8 @@ SnapSerializer.prototype.loadInput = function (model, input, block, object) {
         input.setColor(this.loadColor(model.contents));
     } else {
         val = this.loadValue(model);
-        if (!isNil(val) && !isNil(input) && input.setContents) {
+        if (!isNil(val) && !isNil(input) && input.setContents &&
+                !(input instanceof ADT_SlotMorph)) {
             // checking whether "input" is nil should not
             // be necessary, but apparently is after retina support
             // was added.

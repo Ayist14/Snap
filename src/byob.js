@@ -170,6 +170,10 @@ function CustomBlockDefinition(spec, receiver) {
     this.codeHeader = null; // generate text code
     this.translations = {}; // format: {lang : spec}
 
+    // data type annotations, optional strong typing support
+    this.reports = null; // optional return type declaration, e.g. 'number'
+    this.enforceTypes = false;
+
     // allow libraries to overload primitives with global custom blocks
     this.selector = null;
     this.primitive = null;
@@ -1270,6 +1274,7 @@ CustomCommandBlockMorph.prototype.refresh = function (aDefinition, offset) {
 
     this.setCategory(def.category);
     this.selector = def.primitive || 'evaluateCustomBlock';
+    this.enforceTypes = def.enforceTypes;
     if (this.blockSpec !== newSpec) {
         oldInputs = this.inputs();
         if (!this.zebraContrast) {
@@ -1896,6 +1901,20 @@ CustomCommandBlockMorph.prototype.userMenu = function () {
             'uncheck to\nhide in palette',
             'check to\nshow in palette'
         );
+        if (this instanceof ReporterBlockMorph) {
+            menu.addItem(
+                "return data type ...",
+                () => hat.editReportType(),
+                "specify what kind of data this block reports"
+            );
+        }
+        addOption(
+            'enforce types',
+            () => hat.enforceTypes = !hat.enforceTypes,
+            hat.enforceTypes,
+            'uncheck for dynamically\ntyped inputs',
+            'check to enforce\nstatically typed inputs'
+        );
         menu.addItem(
             "export...",
             () => hat.exportBlockDefinition(),
@@ -2382,6 +2401,7 @@ CustomReporterBlockMorph.prototype.init = function (
         this.isTemplate = true;
     }
     this.category = definition.category;
+    this.reports = definition.reports;
     this.storedTranslations = null; // transient - only for "wishes"
     this.variables = new VariableFrame();
     this.initializeVariables(definition.variableNames);
@@ -3707,6 +3727,8 @@ BlockEditorMorph.prototype.updateDefinition = function () {
         this.definition.category = head.blockCategory;
         this.definition.type = head.type;
         this.definition.isHelper = head.isHelper;
+        this.definition.reports = head.reports;
+        this.definition.enforceTypes = head.enforceTypes;
         if (head.blockSelector && this.definition.isGlobal) {
             this.definition.selector = head.blockSelector;
         }
@@ -3938,6 +3960,8 @@ PrototypeHatBlockMorph.prototype.init = function (definition) {
 
     // init inherited stuff
     HatBlockMorph.uber.init.call(this);
+    this.reports = definition ? definition.reports : null;
+    this.enforceTypes = definition ? definition.enforceTypes : false;
     this.color = SpriteMorph.prototype.blockColor.control;
     this.category = 'control';
     this.add(proto);
@@ -4019,6 +4043,26 @@ PrototypeHatBlockMorph.prototype.enableBlockVars = function (choice) {
     }
     this.replaceInput(this.parts()[0], prot);
     this.spec = null;
+};
+
+// PrototypeHatBlockMorph specifying a return data type for reporters
+
+PrototypeHatBlockMorph.prototype.editReportType = function () {
+    var block = this.definition.blockInstance();
+    block.addShadow(new Point(3, 3));
+
+    new DialogBoxMorph(
+        this,
+        str => this.reports = str,
+        this
+    ).prompt(
+        "Return Data Type",
+        this.reports || '',
+        this.world(),
+        block.doWithAlpha(1, () => block.fullImage()),
+        // this.selectorMenu
+        InputSlotMorph.prototype.typesMenu
+    );
 };
 
 // PrototypeHatBlockMorph overloading a primitive with a custom block

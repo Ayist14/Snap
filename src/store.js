@@ -1112,8 +1112,10 @@ SnapSerializer.prototype.loadCustomBlocks = function (
         }
         definition.type = child.attributes.type || 'command';
         definition.selector = child.attributes.selector || null;
+        definition.reports = child.attributes.reports || null;
         definition.setPrimitive(child.attributes.primitive || null);
         definition.isHelper = (child.attributes.helper === 'true') || false;
+        definition.enforceTypes = (child.attributes.strict === 'true') || false;
         definition.spaceAbove = (child.attributes.space === 'true') || false;
         definition.semantics = child.attributes.semantics || null;
         definition.isGlobal = (isGlobal === true);
@@ -1235,8 +1237,10 @@ SnapSerializer.prototype.loadCustomizedPrimitives = function (
         }
         definition.type = child.attributes.type || 'command';
         definition.selector = sel || null;
+        definition.reports = child.attributes.reports || null;
         definition.setPrimitive(child.attributes.primitive || null);
         definition.isHelper = (child.attributes.helper === 'true') || false;
+        definition.enforceTypes = (child.attributes.strict === 'true') || false;
         definition.semantics = child.attributes.semantics || null;
         definition.isGlobal = true;
 
@@ -2646,7 +2650,7 @@ CustomBlockDefinition.prototype.toXML = function (serializer) {
     }
 
     return serializer.format(
-        '<block-definition s="@" type="@" category="@"%%%%%>' +
+        '<block-definition s="@" type="@" category="@"%%%%%%%>' +
             '%' +
             (this.variableNames.length ? '<variables>%</variables>' : '@') +
             '<header>@</header>' +
@@ -2663,8 +2667,12 @@ CustomBlockDefinition.prototype.toXML = function (serializer) {
         this.primitive && this.isGlobal ?
             ' primitive="' + this.primitive + '"'
             : '',
+        this.reports ?
+            ' reports="' + this.reports + '"'
+            : '',
         this.isHelper ? ' helper="true"' : '',
         this.spaceAbove ? ' space="true"' : '',
+        this.enforceTypes ? ' strict="true"' : '',
         this.type === 'hat' && this.semantics === 'rule' ?
             ' semantics="rule"' : '',
         this.comment ? this.comment.toXML(serializer) : '',

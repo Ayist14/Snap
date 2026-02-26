@@ -106,6 +106,7 @@
 
 ### 2026-02-26
 * blocks, byob, store: new ADT type input slot
+* blocks, byob, store: added optional type annotations and strict typing to blocks and custom blocks
 
 ### 2026-02-25
 * updated neural networks, tables and shapes libraries with new type annotation format (underscore-type string)

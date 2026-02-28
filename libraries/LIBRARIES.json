@@ -15,10 +15,6 @@
         "searchData": [
           "verwandle Code _ in Blöcke\rca",
           "verwandle Blöcke _ in Code _ formatiert\rca"
-        ],
-        "searchData": [
-          "verwandle Code _ in Blöcke\rca",
-          "verwandle Blöcke _ in Code _ formatiert\rca"
         ]
       },
       "ca": {
@@ -28,6 +24,10 @@
           "blocs del codi textual _",
           "codi textual dels blocs _ formatats _"
         ]
+      },
+      "zh_CN": {
+        "name": "积木与代码互转库",
+        "description": "伪Lisp代码与积木双向转换"
       }
     }
   },
@@ -51,16 +51,14 @@
           "klone _ _",
           "Feld _ von _ _",
           "füge _ zu _ hinzu"
-        ],
-        "searchData": [
-          "Objekt _",
-          "klone _ _",
-          "Feld _ von _ _",
-          "füge _ zu _ hinzu"
         ]
       },
       "ca": {
         "description": "Objectes amb herència per prototips"
+      },
+      "zh_CN": {
+        "name": "面向对象编程(OOP)库",
+        "description": "基于原型式的可继承(数据)对象"
       }
     }
   },
@@ -93,19 +91,15 @@
           "hat _ sich ereignet?",
           "hat _ sich verändert?",
           "Wenn _ sich ändert"
-        ],
-        "searchData": [
-          "Wenn Variable _ sich ändert",
-          "Wenn _ > _",
-          "Wenn Hintergrund zu _ wechselt",
-          "hat _ sich ereignet?",
-          "hat _ sich verändert?",
-          "Wenn _ sich ändert"
         ]
       },
       "ca": {
         "name": "Esdeveniments",
         "description": "Crear escolta d'esdeveniments programats per canvi en les dades, canvis d'estat o creuament del llindar d'un sensor"
+      },
+      "zh_CN": {
+        "name": "更多事件库",
+        "description": "监测变量变化(包括值、舞台背景和外部传感器)"
       }
     }
   },
@@ -130,12 +124,6 @@
           "Farbe _ _ um _ %",
           "verschiebe _ von _ um _",
           "Farbübergang _ Länge _"
-        ],
-        "searchData": [
-          "mische _ mit _ im Verhältnis _ %",
-          "Farbe _ _ um _ %",
-          "verschiebe _ von _ um _",
-          "Farbübergang _ Länge _"
         ]
       },
       "ca": {
@@ -155,7 +143,8 @@
         "name": "Кольори"
       },
       "zh_CN": {
-        "name": "颜色"
+        "name": "颜色调配库",
+        "description": "色彩调和、调整与渐变"
       }
     }
   },
@@ -188,7 +177,13 @@
       "operators",
       "other",
       "Tables"
-    ]
+    ],
+    "translations": {
+      "zh_CN": {
+        "name": "表格处理库",
+        "description": "使用强大、通用的函数创建、选择、筛选、排序、转换、扩展和分析表格数据集。其设计灵感源自 Pyret 的 Tables 数据，详情可参阅：https://pyret.org/docs/latest/tables.html。感谢 Shriram Krishnamurthi 的启发、反馈与建议。示例项目（仍在开发中）：https://snap.berkeley.edu/versions/dev/snap.html#present:Username=jens&ProjectName=Shriram%20Tables&editMode"
+      }
+    }
   },
   {
     "fileName": "neural_networks_module.xml",
@@ -244,6 +239,10 @@
       "ca": {
         "name": "Xarxes Neuronals",
         "description": "Classifica dades vectoritzades utilitzant xarxes neuronals. Entrena i valida els teus propis models interns."
+      },
+      "zh_CN": {
+        "name": "神经网络训练库",
+        "description": "借助神经网络对数据向量进行分类，训练并验证你自己的深度神经网络模型。本库完全用Snap!本身实现"
       }
     }
   },
@@ -267,6 +266,10 @@
       "Edge Computer Vision"
     ],
     "translations": {
+      "zh_CN": {
+        "name": "Edge AI视觉检测库",
+        "description": "通过 Google 的 Edge AI 计算机视觉 API 检测手部、人脸和身体特征或手势"
+      }
     }
   },
   {
@@ -292,16 +295,6 @@
       },
       "de": {
         "name": "Iteration, Komposition",
-        "searchData": [
-          "fange _ _\rca",
-          "wirf _\rca",
-          "fange _ _\rca",
-          "wirf _ _\rca",
-          "falls _ dann _ und pause $-1-255-220-0\rca",
-          "ignoriere _\rca",
-          "führe _ mit Continuation aus",
-          "rufe _ mit Continuation auf"
-        ],
         "searchData": [
           "fange _ _\rca",
           "wirf _\rca",
@@ -358,17 +351,6 @@
           "repete _ vezes _ _ $-0.7\rca",
           "para _ de _ com passo _ a _ _ $-0.7\rca",
           "tendo _ o valor inicial _ , executa _ definido como _\rca"
-        ],
-        "searchData": [
-          "o resultado de _ invocações em cascata de _ com argumento inicial _ _\rca",
-          "o resultado da invocação em cascata até que _ de _ com argumento inicial _ _\rca",
-          "a composição de _ com _\rca",
-          "repete _ até que _ $-0.7\rca",
-          "repete _ enquanto _ $-0.7\rca",
-          "enquanto _ , repete _ $-0.7\rpl",
-          "repete _ vezes _ _ $-0.7\rca",
-          "para _ de _ com passo _ a _ _ $-0.7\rca",
-          "tendo _ o valor inicial _ , executa _ definido como _\rca"
         ]
       },
       "sk": {
@@ -388,7 +370,7 @@
         "description": "Традиційні конструкції циклу (while, until тощо) плюс Lisp \"named let\" (узагальнення FOR) плюс функціональна ітерація (повторний виклик функції) і композиція функції."
       },
       "zh_CN": {
-        "name": "迭代,组合",
+        "name": "循环、函数迭代和组合库",
         "description": "传统的循环结构（如while、until等），加上Lisp中的\"named let\"（FOR的一般化），再加上函数迭代（反复调用一个函数）和函数组合。"
       }
     },
@@ -430,21 +412,10 @@
           "notació textual de _\rpl",
           "frase _\rpl",
           "multi-mapeja _ sobre _\rpl"
-        ],
-        "searchData": [
-          "ordena _ segons criteri _\rpl",
-          "associació _ _\rpl",
-          "_ per cada _ de _ _\rpl",
-          "notació textual de _\rpl",
-          "frase _\rpl",
-          "multi-mapeja _ sobre _\rpl"
         ]
       },
       "de": {
         "name": "Listen bearbeiten",
-        "searchData": [
-          "Satz to Liste _\rca"
-        ],
         "searchData": [
           "Satz to Liste _\rca"
         ]
@@ -479,9 +450,6 @@
         "name": "Metody listy",
         "searchData": [
           "flash turbo fast spakuj _"
-        ],
-        "searchData": [
-          "flash turbo fast spakuj _"
         ]
       },
       "pt": {
@@ -505,8 +473,8 @@
         "description": "Деякі стандартні функції для списків (перевертання, сортування тощо)"
       },
       "zh_CN": {
-        "name": "列表工具",
-        "description": "一些列表上的标准函数(反转、排序等)"
+        "name": "列表处理库",
+        "description": "一些应用在列表上的标准(高阶)函数(反转、排序等)"
       }
     },
     "searchData": [
@@ -542,16 +510,6 @@
           "$brush _ del color _",
           "✐ color de llapis actual",
           "✐ fixa el llapis de color _ _"
-        ],
-        "searchData": [
-          "$brush fixa el _ del llapis a _ _",
-          "$brush _ del llapis",
-          "$brush augmenta _ del llapis en _",
-          "$brush barreja colors _ amb criteri _",
-          "$brush color amb _ _ _",
-          "$brush _ del color _",
-          "✐ color de llapis actual",
-          "✐ fixa el llapis de color _ _"
         ]
       },
       "es": {
@@ -567,7 +525,7 @@
         "name": "Кольори та олівці"
       },
       "zh_CN": {
-        "name": "颜色和蜡笔"
+        "name": "颜色和蜡笔库"
       }
     },
     "searchData": [
@@ -681,11 +639,6 @@
           "fixa el llapis de color _\rpl",
           "canvia de llapis de color saltant _\rpl",
           "llapis de color\rpl"
-        ],
-        "searchData": [
-          "fixa el llapis de color _\rpl",
-          "canvia de llapis de color saltant _\rpl",
-          "llapis de color\rpl"
         ]
       },
       "es": {
@@ -701,7 +654,7 @@
         "name": "Олівці"
       },
       "zh_CN": {
-        "name": "蜡笔"
+        "name": "蜡笔库"
       }
     },
     "searchData": [
@@ -732,7 +685,7 @@
         "name": "Великі, раціональні, комплексні числа #s"
       },
       "zh_CN": {
-        "name": "大数、有理数、复数"
+        "name": "Scheme数字类型库"
       }
     },
     "searchData": [
@@ -754,9 +707,6 @@
         "name": "Detecta errors",
         "searchData": [
           "prova de forma segura reportant _ i si _ reportant _\rpl"
-        ],
-        "searchData": [
-          "prova de forma segura reportant _ i si _ reportant _\rpl"
         ]
       },
       "it": {
@@ -769,7 +719,7 @@
         "name": "Відстежити помилки"
       },
       "zh_CN": {
-        "name": "捕获错误"
+        "name": "异常处理库"
       }
     },
     "searchData": [
@@ -811,10 +761,6 @@
         "searchData": [
           "executa _ em paralelo e espera\rca",
           "executa _ em paralelo\rca"
-        ],
-        "searchData": [
-          "executa _ em paralelo e espera\rca",
-          "executa _ em paralelo\rca"
         ]
       },
       "ti": {
@@ -826,7 +772,7 @@
         "description": "Запустіть кілька сценаріїв паралельно та зачекайте, поки всі будуть виконані"
       },
       "zh_CN": {
-        "name": "平行化",
+        "name": "并行编程库",
         "description": "并行运行多个脚本并等待所有脚本完成."
       }
     },
@@ -868,12 +814,6 @@
         "description": "Lei de Eisenberg: O quer que se possa fazer através da interface com o utilizador deve ser possível de fazer a partir da linguagem de programação e vice-versa.",
         "searchData": [
           "o valor da configuração _\rca",
-          "altera o valor da configuração _ para _\rca",
-          "altera o valor da configuração _ para _\rca"
-        ],
-        "searchData": [
-          "o valor da configuração _\rca",
-          "altera o valor da configuração _ para _\rca",
           "altera o valor da configuração _ para _\rca"
         ]
       },
@@ -906,6 +846,10 @@
       "ca": {
         "name": "Compressió de llistes",
         "description": "Versió HOF (amb funcions d'ordre superior) de la compressió ZIP, que permet \"hiperitzar\" qualsevol funció diàdica (amb dos arguments)"
+      },
+      "zh_CN": {
+        "name": "超运算化(基本实现)库",
+        "description": "ZIP的HOF(高阶函数)版本，可以让你“Hyperize”(超运算化)任何动态运行的计算函数"
       }
     },
     "searchData": [
@@ -939,9 +883,6 @@
     ],
     "translations": {
       "de": {
-        "searchData": [
-          "Neigung _\rar"
-        ],
         "searchData": [
           "Neigung _\rar"
         ]
@@ -1061,31 +1002,6 @@
           "augmenta l'escala de _ en _",
           "escala de _",
           "enregistra posició actual",
-          "torna a la posició enregistrada",
-          "vista de l'escarbat"
-        ],
-        "searchData": [
-          "reinicia",
-          "fixa l'escala de _ a _",
-          "fixa el desplaçament de la base a _",
-          "torna a casa",
-          "vés a _",
-          "deixa d'extrudir",
-          "mou-te _ passos",
-          "mou-te en la _ pròpia _ passos",
-          "fixa la coordenada _ a _",
-          "posició _",
-          "augmenta la coordenada _ en _",
-          "gira sobre _ propi en _ graus",
-          "fixa l'angle _ propi a _",
-          "enregistra posició actual",
-          "angle _",
-          "apunta cap a _",
-          "comença a extrudir amb _ de base",
-          "enregistra les posicions de la tortuga _",
-          "punts de la base",
-          "augmenta l'escala de _ en _",
-          "escala de _",
           "torna a la posició enregistrada",
           "vista de l'escarbat"
         ]
@@ -1266,12 +1182,6 @@
           "sprich _ mit _ Aussprache _ und Höhe _ Geschwindigkeit _\rpt",
           "sprich _ mit _ Aussprache _ und Höhe _ Geschwindigkeit _ und warte\rpt",
           "erkenne Gesprochenes\rar",
-          "stoppe Spracherkennung"
-        ],
-        "searchData": [
-          "sprich _ mit _ Aussprache _ und Höhe _ Geschwindigkeit _\rpt",
-          "sprich _ mit _ Aussprache _ und Höhe _ Geschwindigkeit _ und warte\rpt",
-          "erkenne Gesprochenes\rar",
           "Sprachantwort begonnen?",
           "aktiviere Sprachausgabe _",
           "stoppe Spracherkennung"
@@ -1398,9 +1308,6 @@
         "name": "Píxeis",
         "searchData": [
           "$camera a imagem actual do vídeo\rpl"
-        ],
-        "searchData": [
-          "$camera a imagem actual do vídeo\rpl"
         ]
       },
       "ti": {
@@ -1499,18 +1406,6 @@
           "a nota com _ Hz\rca",
           "a frequência da nota _\rca",
           "o nome da nota _\rca"
-        ],
-        "searchData": [
-          "executa no modo turbo _",
-          "as amostras de som com _ Hz de _ s amostrado a _ Hz\rca",
-          "π",
-          "_ radianos em graus\rca",
-          "o som _\rca",
-          "desenha o gráfico do som _\rca",
-          "$-1-255-0-0 uma nova gravação\rca",
-          "a nota com _ Hz\rca",
-          "a frequência da nota _\rca",
-          "o nome da nota _\rca"
         ]
       },
       "ti": {
@@ -1584,16 +1479,6 @@
           "os itens de _ com a chave _ entre _ e _ com passo _ completados por _\rca",
           "_ em minúsculas\rca",
           "desenha gráfico de barras de _ em (x"
-        ],
-        "searchData": [
-          "flash turbo fast as frequências dos itens de _\rca",
-          "o agrupamento dos itens de _ de acordo com _\rca",
-          "uma ordenação de _ com critério _\rca",
-          "o histograma de _ entre _ e _ com intervalo _\rca",
-          "o histograma de _ agrupado de acordo com _ entre _ e _ com passo _\rca",
-          "os itens de _ com a chave _ entre _ e _ com passo _ completados por _\rca",
-          "_ em minúsculas\rca",
-          "desenha gráfico de barras de _ em (x"
         ]
       },
       "ti": {
@@ -1633,13 +1518,6 @@
       "ca": {
         "name": "Base de dades",
         "description": "Desa al navegador dades (clau-valor) persistents entre sessions d'Snap!",
-        "searchData": [
-          "desa clau",
-          "dades desades al navegador\rpl",
-          "esborra clau",
-          "esborra dades del navegador\rpl",
-          "obté valor de clau"
-        ],
         "searchData": [
           "desa clau",
           "dades desades al navegador\rpl",
@@ -1737,21 +1615,10 @@
         "searchData": [
           "frase _\res",
           "notació textual de _\res"
-        ],
-        "searchData": [
-          "frase _\res",
-          "notació textual de _\res"
         ]
       },
       "de": {
         "name": "Wörter, Sätze",
-        "searchData": [
-          "füge Wörter zusammen _\rca",
-          "Liste to Satz _\rca",
-          "Satz to Liste _\rca",
-          "Wort to Liste _\rca",
-          "Liste to Wort _\rca"
-        ],
         "searchData": [
           "füge Wörter zusammen _\rca",
           "Liste to Satz _\rca",
@@ -1802,21 +1669,7 @@
           "a última palavra de _\rca",
           "a palavra _ está vazia\rca",
           "a frase _ está vazia\rca",
-          "lança o erro _\rpl",
-          "a primeira palavra de _\rca"
-        ],
-        "searchData": [
-          "_ sem o primeiro caractere\rca",
-          "_ sem a primeira palavra\rca",
-          "_ sem o último caractere\rca",
-          "_ sem a última palavra\rca",
-          "a primeira palavra de _\rca",
-          "o último caractere de _\rca",
-          "a última palavra de _\rca",
-          "a palavra _ está vazia\rca",
-          "a frase _ está vazia\rca",
-          "lança o erro _\rpl",
-          "a primeira palavra de _\rca"
+          "lança o erro _\rpl"
         ]
       },
       "sk": {
@@ -1948,9 +1801,6 @@
         "description": "Afegeix funcionalitats del llenguatge APL als hiper-blocs.",
         "searchData": [
           "ordena _ segons criteri _"
-        ],
-        "searchData": [
-          "ordena _ segons criteri _"
         ]
       },
       "es": {
@@ -1973,7 +1823,7 @@
       },
       "zh_CN": {
         "name": "APL原语",
-        "description": "添加支持超级块的APL语言功能."
+        "description": "添加支持超运算积木的APL语言功能."
       }
     },
     "searchData": [
@@ -2048,9 +1898,6 @@
         "description": "Variació del tipus de dades \"llistes\" on els elements de la llista no són avaluats fins que s'utilitzen. D'aquesta manera es poden construir llistes amb milions d'elements sense un gran consum de memòria i fins i tot construir llistes de mida infinita. (S'inclou un bloc d'exemple que reporta tots els números primers.) Veieu el tutorial a SICP 3.5.",
         "searchData": [
           "ordena _ segons criteri _"
-        ],
-        "searchData": [
-          "ordena _ segons criteri _"
         ]
       },
       "es": {
@@ -2067,17 +1914,6 @@
       },
       "pt": {
         "name": "Canais (listas preguiçosas)",
-        "searchData": [
-          "o primeiro item do canal _",
-          "um canal com todos os itens de _ menos o primeiro",
-          "a prefixação de _ ao canal _",
-          "um canal com _",
-          "um canal com os números a partir de _",
-          "um canal com _",
-          "um canal com os números a partir de _",
-          "a aplicação de _ aos itens dos canais _",
-          "os itens tais que _ do canal _"
-        ],
         "searchData": [
           "o primeiro item do canal _",
           "um canal com todos os itens de _ menos o primeiro",
@@ -2166,11 +2002,6 @@
       "ca": {
         "name": "Gràfics de barres",
         "description": "Agafa una taula (normalment obtinguda des d'un fitxer CSV) com a entrada i obté un resum de la taula agrupant les dades pel camp especificat pel número de columna. Les altres tres entrades només s'utilitzen si els valors d'aquest camp són nombres, i llavors permet agrupar-los (per exemple en dècades, segles...). Aquestes tres entrades indiquen els valors més petits i més grans dels grups i, més important, la longitud de l'agrupació (10 per dècades, 100 per segles). Si el camp no és numèric, cal deixar aquests tres camps buits o a zero. En aquest darrer cas, cada valor de text farà una agrupació (una dada a representar) i apareixerà en ordre alfabètic. El bloc retorna una nova taula amb tres columnes. La primera té el nom del grup. La segona el número de registres que té cada grup. I la tercera té una altra taula amb els registres originals que s'han agrupat. Si les agrupacions no tenen una amplada constant o es vol agrupar per alguna funció o per més d'un camp, cal utilitzar la llibreria \"Anàlisi de la distribució de freqüències\".",
-        "searchData": [
-          "gràfica de la taula _ agrupada pel camp",
-          "ordena taula _ pel camp _ en ordre _",
-          "agrupa taula _ pel camp _ per intervals de _"
-        ],
         "searchData": [
           "gràfica de la taula _ agrupada pel camp",
           "ordena taula _ pel camp _ en ordre _",
@@ -2269,13 +2100,6 @@
           "a resposta a _ de _ enviando _ e cabeçalhos _",
           "um par (chave",
           "a localização actual do dispositivo"
-        ],
-        "searchData": [
-          "os dados JSON _ em formato de lista",
-          "o valor com chave _ em _",
-          "a resposta a _ de _ enviando _ e cabeçalhos _",
-          "um par (chave",
-          "a localização actual do dispositivo"
         ]
       },
       "sk": {
@@ -2345,11 +2169,6 @@
           "assigna a _ el valor _\res",
           "mostra la variable _\res",
           "amaga la variable _\res"
-        ],
-        "searchData": [
-          "assigna a _ el valor _\res",
-          "mostra la variable _\res",
-          "amaga la variable _\res"
         ]
       },
       "es": {
@@ -2373,12 +2192,6 @@
           "remove as variáveis _\rca",
           "o valor de _\rpl",
           "a variável _ existe\rca"
-        ],
-        "searchData": [
-          "cria as variáveis _ _\rca",
-          "remove as variáveis _\rca",
-          "o valor de _\rpl",
-          "a variável _ existe\rca"
         ]
       },
       "ti": {
@@ -2390,8 +2203,8 @@
         "description": "Створення глобальних/спрайтових/скриптових змінних у сценарії та керування ними"
       },
       "zh_CN": {
-        "name": "创建变量",
-        "description": "在脚本中创建和管理全局/精灵/脚本变量"
+        "name": "变量管理库",
+        "description": "在脚本中创建和管理全局/私有/脚本变量"
       }
     },
     "searchData": [
@@ -2451,17 +2264,9 @@
           "escribir _ con tamaña _ e información _\rpt",
           "disfraz de texto _ tamaño _ e información _\rpt",
           "nombre de la fuente _ _ espesor _ _ ¿oblicuo? _\rpt"
-        ],
-        "searchData": [
-          "escribir _ con tamaña _ e información _\rpt",
-          "disfraz de texto _ tamaño _ e información _\rpt",
-          "nombre de la fuente _ _ espesor _ _ ¿oblicuo? _\rpt"
         ]
       },
       "pt": {
-        "searchData": [
-          "nome da fonte _ _ texto em negrito? _ _ oblíquo? _\res"
-        ],
         "searchData": [
           "nome da fonte _ _ texto em negrito? _ _ oblíquo? _\res"
         ]
@@ -2923,11 +2728,6 @@
           "mostra la variable _\res",
           "assigna a _ el valor _\res",
           "associació _ _"
-        ],
-        "searchData": [
-          "mostra la variable _\res",
-          "assigna a _ el valor _\res",
-          "associació _ _"
         ]
       }
     },
@@ -3106,30 +2906,6 @@
           "acceleració",
           "nivell de llum",
           "temperatura °C"
-        ],
-        "searchData": [
-          "🤖 connecta't a _",
-          "🤖 desconnecta't",
-          "🤖 connectat",
-          "toca la nota _ a l'octava _ durant _ ms",
-          "botó _",
-          "dibuixa a la pantalla _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _",
-          "mou motor _ _ passos _",
-          "mou motor 1 en _ motor 2 en _ _ passos",
-          "mou motor _ angle _ °",
-          "mou motor _ _ voltes completes",
-          "escriu _ a x",
-          "neteja pantalla",
-          "posa el LED x",
-          "mostra caràcter _",
-          "posa el pin digital _ a _",
-          "posa el pin analògic _ a _",
-          "llegeix el pin digital _",
-          "llegeix el pin analògic _",
-          "inclinació _",
-          "acceleració",
-          "nivell de llum",
-          "temperatura °C"
         ]
       },
       "it": {
@@ -3235,6 +3011,10 @@
       "ca": {
         "name": "Metaprogramació",
         "description": "Analitza, transforma i genera blocs i programes dinàmicament"
+      },
+      "zh_CN": {
+        "name": "元编程库",
+        "description": "分析、转换、生成积木和程序"
       }
     }
   },
@@ -3253,6 +3033,10 @@
       "ca": {
         "name": "Continuacions",
         "description": "Captura dinàmicament les continuacions en temps d'execució i crea diferents estructures de control"
+      },
+      "zh_CN": {
+        "name": "延续 + call/cc库",
+        "description": "动态获取continuation(延续)，以实现更多控制流\n译者注：call/cc的全称是“call-with-current-continuation”，Snap!的中文翻译传统之一是将其译为“带延续运行”/“带延续调用”。\ncall/cc的用例如：\n“循环、函数迭代和组合”库里的“非本地退出”积木、协程(Coroutine)、生成器(Generator)"
       }
     }
   },
@@ -3404,10 +3188,6 @@
     ],
     "translations": {
       "pt": {
-        "searchData": [
-          "um par (chave",
-          "altera o valor da configuração _ para _"
-        ],
         "searchData": [
           "um par (chave",
           "altera o valor da configuração _ para _"

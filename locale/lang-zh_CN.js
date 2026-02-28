@@ -31,7 +31,11 @@ SnapTranslator.dict.zh_CN = { ...SnapTranslator.dict.zh_CN,
     "_ contains _": "_ 含有 _",
     "_ effect": "_ 效果",
     "_ find first item _ in _": "_ 保留满足 _ 且来自 _ 的第一个数据",
+<<<<<<< Updated upstream
     "_ in front of _": "_ 放在 _ 前面",
+=======
+    "_ in front of _": "_ 放在 _ 前面(CONS)",
+>>>>>>> Stashed changes
     "_ keep items _ from _": "_ 保留满足 _ 且来自 _ 的所有数据",
     "_ map _ over _": "_ 映射 _ 在 _",
     "_ mod _": "_ mod _",
@@ -75,7 +79,11 @@ SnapTranslator.dict.zh_CN = { ...SnapTranslator.dict.zh_CN,
     "all <": "",
     "all =": "是否全部相等",
     "all >": "",
+<<<<<<< Updated upstream
     "all but first of _": "_ 第一项以外",
+=======
+    "all but first of _": "_ 第一项以外(CDR)",
+>>>>>>> Stashed changes
     "all but this script": "这个脚本外的其它脚本",
     "all identical": "全部相同",
     "all scenes": "所有场景",
@@ -745,7 +753,7 @@ SnapTranslator.dict.zh_CN = { ...SnapTranslator.dict.zh_CN,
     "is read-only": "是只读的",
     "italic": "斜体",
     "item": "项",
-    "item _ of _": "第 _ 项 _",
+    "item _ of _": "第 _ 项 _ (第一项 -> CAR)",
     "items": "项",
     "Iteration, composition": "迭代,组合",
     "j": "j",

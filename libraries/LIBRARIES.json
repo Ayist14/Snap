@@ -223,6 +223,7 @@
         "name": "表格库",
         "description": "使用强大、通用的函数创建、选择、筛选、排序、转换、扩展和分析表格数据集。其设计灵感源自 Pyret 的 Tables 数据，详情可参阅：https://pyret.org/docs/latest/tables.html。感谢 Shriram Krishnamurthi 的启发、反馈与建议。示例作品(仍在开发中)：https://snap.berkeley.edu/versions/dev/snap.html#present:Username=jens&ProjectName=Shriram%20Tables&editMode"
       }
+    }
   },
   {
       "fileName": "neural_networks_module.xml",

@@ -12,6 +12,8 @@
     * hide empty custom categories in puzzles and when selecting the "hide empty categories" setting
     * shadow (don't inherit / delegate) scripts that use block-instance variables for sprite-clones
     * custom reporters without an explicit return data type declaration automatically infer one from their definition script when they are edited
+    * ADT slots can be made localizable by using the dollar-underscore prefix
+    * updated shapes library with translatable "shape" ADT input slots
     * changed small gear symbol to 6 spikes (from 8)
     * MQTT extension update, thanks, Simon and Xavier!
     * rearranged shapes library into the first group
@@ -23,6 +25,13 @@
 * **Translation Updates:**
     * German
     * Chinese
+
+### 2026-08-14
+* blocks: support translating ADT input slots using the $-underscore prefix
+* German translation update for common ADT slots used in standard libraries
+* updated shapes library with translatable "shape" ADT input slots
+* Chinese translation update, thank you, @Ayist14! 
+* v12.1.0-rc4
 
 ### 2026-08-13
 * byob: automatically infer the return data type for custom reporters that don't yet have one by scanning their definition when editing them

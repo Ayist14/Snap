@@ -1993,5 +1993,11 @@ SnapTranslator.dict.zh_CN = { ...SnapTranslator.dict.zh_CN,
   "Objects": "物品",
   "Places": "地点",
   "Shapes": "形状",
-  "Transportation": "交通工具"
+  "Transportation": "交通工具",
+  "align x:": "并与下列坐标对齐: x:",
+  "align y:": "并与下列坐标对齐: y:",
+  "centroid x": "质心的x坐标",
+  "centroid y": "质心的y坐标",
+  "pinhole x": "位似基准点的x坐标",
+  "pinhole y": "位似基准点的y坐标",
 };

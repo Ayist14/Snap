@@ -8,14 +8,17 @@
     * new animated and still symbols depicting interlocking gears - used for process data type
     * new "Body Language" category in the "Edge AI" library
     * new category selection buttons in the costumes browser dialog, thank you, Victoria!
+    * new - as of yet "hidden" behind shift-right-click script pane menu item "clean unhatted", thank you, Peter!
 * **Notable Changes:**
     * hide empty custom categories in puzzles and when selecting the "hide empty categories" setting
     * shadow (don't inherit / delegate) scripts that use block-instance variables for sprite-clones
     * custom reporters without an explicit return data type declaration automatically infer one from their definition script when they are edited
     * ADT slots can be made localizable by using the dollar-underscore prefix
     * dynamic dropdown menu items can be localized by using the dollar-underscore prefix
+    * ADTs (custom types) are rendered as "box" symbols in variable-, list- and table watchers where they cannot render their own morph methods for lack of a full process
     * reduced the number of blocks shapes library and changed the UI of the composition blocks
     * updated shapes library with translatable "shape" ADT input slots
+    * updated neural networks library with translatable "neural network" ADT input slots
     * changed small gear symbol to 6 spikes (from 8)
     * MQTT extension update, thanks, Simon and Xavier!
     * rearranged shapes library into the first group
@@ -25,9 +28,16 @@
     * fixed zebra coloring for chameleon-colored variadic input slots
 * **Documentation Updates:**
     * updated API.md with new "noStorageItems" configuration key
+    * updated CONTRIBUTING.md with instruction to issue PRs against the dev branch, thanks, Peter!
 * **Translation Updates:**
     * German
     * Chinese
+
+### 2026-08-17
+* further refined and simplified the shapes library
+* updated neural networks library with translatable "neural network" ADT input slots
+* lists, objects, tables, store: render ADTs as box / cube symbol in situations where they cannot be rendered by their own method, e.g. inside list / table / variable watchers
+* blocks: new - as of yet "hidden" behind shift-right-click script pane menu item "clean unhatted", thank you, Peter!
 
 ### 2026-08-16
 * v12.1.0-rc5

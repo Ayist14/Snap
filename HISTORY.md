@@ -6,28 +6,94 @@
     * new special "process" input slot type (large gear symbol)
     * new blocks for creating new processes, getting their state, pausing, resuming and stopping them individually and programmatically
     * new animated and still symbols depicting interlocking gears - used for process data type
+    * new zoom bar at the bottom right of the IDE, new magnifier plus / minus symbols used for zooming the IDE in and out
     * new "Body Language" category in the "Edge AI" library
     * new category selection buttons in the costumes browser dialog, thank you, Victoria!
+    * new - as of yet "hidden" behind shift-right-click script pane menu item "clean unhatted", thank you, Peter!
+    * added "round rect", "skew", "paint all" and "fill all" blocks to the "shapes" library
 * **Notable Changes:**
     * hide empty custom categories in puzzles and when selecting the "hide empty categories" setting
     * shadow (don't inherit / delegate) scripts that use block-instance variables for sprite-clones
     * custom reporters without an explicit return data type declaration automatically infer one from their definition script when they are edited
     * ADT slots can be made localizable by using the dollar-underscore prefix
     * dynamic dropdown menu items can be localized by using the dollar-underscore prefix
+    * ADTs (custom types) are rendered as "box" symbols in variable-, list- and table watchers where they cannot render their own morph methods for lack of a full process
     * reduced the number of blocks shapes library and changed the UI of the composition blocks
     * updated shapes library with translatable "shape" ADT input slots
+    * updated neural networks library with translatable "neural network" ADT input slots
     * changed small gear symbol to 6 spikes (from 8)
     * MQTT extension update, thanks, Simon and Xavier!
     * rearranged shapes library into the first group
+    * added support for localizable dynamic variadic input slot contents (when slot signals 'expand')
+    * added dynamic slot contents support to color and Boolean type slots
+    * added special "basic" input types (23 for "any", 24 for "numeric", 25 for "text") immune to readonly and dropdown menus for use inside variadic input groups
 * **Notable Fixes:**
     * disable empty category buttons when switching back from "hide empty categories" setting
     * fixed display of continuations capturing variadic inputs
     * fixed zebra coloring for chameleon-colored variadic input slots
 * **Documentation Updates:**
     * updated API.md with new "noStorageItems" configuration key
+    * updated CONTRIBUTING.md with instruction to issue PRs against the dev branch, thanks, Peter!
 * **Translation Updates:**
     * German
     * Chinese
+
+### 2026-08-25
+* gui: tweaked zoom bar buttons
+* v12.1.0-rc13
+
+### 2026-08-24
+* gui: fixed a typo in hover-help for puzzles
+* fixed / updated German translations for the costume and vector editors
+* fixed / updated German translations for the project and context menus
+* more German translation fixes
+* symbols: added new "magnifierPlus/Minus" symbols
+* gui: new zoom bar
+* v12.1.0-rc12
+* gui: make zoom bar float in front of dialog boxes
+
+### 2026-08-23
+* threads, blocks: added special "basic$" input type immune to readonly and dropdown menus for use inside variadic input groups
+* v12.1.0-rc11
+
+### 2026-08-22
+* German translation update for "My Shapes" (for snap.schule)
+* shapes: minor speed-up optimizations
+* blocks: fixed a rendering glitch for ADT slots in flat mode
+* v12.1.0-rc10
+
+### 2026-08-21
+* blocks: fixed and tweaked slot label zebra coloring for variadic inputs
+* blocks, threads: added 'process' item to the "this" reporter's dropdown menu
+* German translation upddate for "process" and "processes"
+* simplified shapes library blocks
+* v12.1.0-rc9
+
+### 2026-08-20
+* blocks: added support for localizable dynamic variadic input slot contents (when slot signals 'expand')
+* German translation update for "with x:" string
+* shapes: added new "fill all of" transformation block to the shapes library 
+* v12.1.0-rc8
+* blocks: added dynamic slot contents support to color and Boolean type slots
+* shapes: collapsed both "round rect" blocks into a single one
+* threads, blocks: added special "basic" input types immune to readonly and dropdown menus for use inside variadic input groups
+
+### 2026-08-19
+* shapes: added new "paint all" transformation block to the shapes library
+
+### 2026-08-18
+* shapes: added "round rect" blocks to the "shapes" library
+* German translation update for geometrical corner names
+* shapes: added "skew" transformation block
+* v12.1.0-rc7
+
+### 2026-08-17
+* further refined and simplified the shapes library
+* updated neural networks library with translatable "neural network" ADT input slots
+* lists, objects, tables, store: render ADTs as box / cube symbol in situations where they cannot be rendered by their own method, e.g. inside list / table / variable watchers
+* blocks: new - as of yet "hidden" behind shift-right-click script pane menu item "clean unhatted", thank you, Peter!
+* v12.1.0-rc6
+* updated German translation for "Image view"
 
 ### 2026-08-16
 * v12.1.0-rc5

@@ -38,9 +38,16 @@
     * German
     * Chinese
 
+### 2026-08-26
+* shapes: fixed broken measure blocks (move / center / place pinhole)
+* v12.1.0-rc14
+
 ### 2026-08-25
 * gui: tweaked zoom bar buttons
 * v12.1.0-rc13
+* shapes library: changed German translation for rhombus (Raute)
+* updated shapes library: changed defaults from 'pinhole' to 'center', combined "paint" and "fill" transformations
+* shapes: reverteed 'center' to 'pinhole', added "fill" variant with optional color
 
 ### 2026-08-24
 * gui: fixed a typo in hover-help for puzzles

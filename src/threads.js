@@ -66,7 +66,7 @@ CustomHatBlockMorph, SymbolMorph, MenuMorph, MorphicPreferences*/
 
 /*jshint esversion: 11, bitwise: false, evil: true*/
 
-modules.threads = '2026-August-04';
+modules.threads = '2026-August-23';
 
 var ThreadManager;
 var Process;
@@ -1897,6 +1897,8 @@ Process.prototype.reportEnvironment = function (choice, trgt = this.context) {
         return this.reportInputs(trgt);
     case 'object':
         return this.reportData(trgt);
+    case 'process':
+        return this;
     default:
         return this.reportSelf(trgt);
     }
@@ -9267,7 +9269,16 @@ Process.prototype.slotType = function (spec) {
         'p':            22, // spec
         // mnemonics:
         'proc':         22,
-        'process':      22
+        'process':      22,
+
+        '23':           23,
+        'basic':        23, // spec
+
+        '24':           24,
+        'basic#':       24, // spec
+
+        '25':           25,
+        'basic$':       25 // spec
 
     }[key];
     if (num === undefined) {
@@ -9297,7 +9308,8 @@ Process.prototype.slotSpec = function (num) {
 
     spec = ['s', 'n', 'b', 'l', 'mlt', 'cs', 'cmdRing', 'repRing', 'predRing',
     'anyUE', 'boolUE', 'obj', 'upvar', 'clr', 'scriptVars', 'loop', 'receive',
-    'send', 'elseif', 'parameter', 'adt', 'nUE', 'p'][id];
+    'send', 'elseif', 'parameter', 'adt', 'nUE', 'p', 'basic', 'basic#',
+    'basic$'][id];
 
     if (spec === undefined) {
         return null;

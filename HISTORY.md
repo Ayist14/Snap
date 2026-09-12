@@ -1,6 +1,39 @@
 # Snap! (BYOB) History
 
 ## in development:
+
+## 12.1.3:
+* **Notable Fixes:**
+    * fixed a visible stepping glitch when displaying intermediate custom reporter results
+
+### 2026-09-10
+* threads: fixed a visible stepping glitch when displaying intermediate custom reporter results
+* prepared v12.1.3 patch
+
+## 12.1.2:
+* **Notable Fixes:**
+    * fixed dropdown menu of the "overlay" block's y-place slot in the shapes library
+    * cleaned up the costumes folder
+
+### 2026-09-10
+* cleaned up costumes
+* prepared v12.1.2 patch
+
+### 2026-09-09
+* fixed #3572
+* shapes library: added type field to rounded rectangles
+
+## 12.1.1:
+* **New Features:**
+    * added 'scn_label(txt)' extension for programmatically setting the label of a tutorial window"
+    * added "set label to" command to the tutorials library
+
+### 2026-09-07
+* extensions: added 'scn_label(txt)' extension for programmatically setting the label of a tutorial window"
+* added "set label to" command to the tutorials library
+* prepared v12.1.1 patch
+
+## 12.1.0:
 * **New Features:**
     * first-class processes - new built-in data type
     * new special "process" input slot type (large gear symbol)
@@ -18,12 +51,12 @@
     * ADT slots can be made localizable by using the dollar-underscore prefix
     * dynamic dropdown menu items can be localized by using the dollar-underscore prefix
     * ADTs (custom types) are rendered as "box" symbols in variable-, list- and table watchers where they cannot render their own morph methods for lack of a full process
-    * reduced the number of blocks shapes library and changed the UI of the composition blocks
-    * updated shapes library with translatable "shape" ADT input slots
-    * updated neural networks library with translatable "neural network" ADT input slots
-    * changed small gear symbol to 6 spikes (from 8)
+    * reduced the number of blocks in the shapes library and changed the UI of the composition blocks
+    * updated the shapes library with translatable "shape" ADT input slots
+    * updated the neural networks library with translatable "neural network" ADT input slots
+    * changed the small gear symbol to 6 spikes (from 8)
     * MQTT extension update, thanks, Simon and Xavier!
-    * rearranged shapes library into the first group
+    * rearranged and moved the shapes library into the first group
     * added support for localizable dynamic variadic input slot contents (when slot signals 'expand')
     * added dynamic slot contents support to color and Boolean type slots
     * added special "basic" input types (23 for "any", 24 for "numeric", 25 for "text") immune to readonly and dropdown menus for use inside variadic input groups
@@ -37,6 +70,13 @@
 * **Translation Updates:**
     * German
     * Chinese
+
+### 2026-09-02
+* prepared v12.1 release
+
+### 2026-08-31
+* German translation update (restored some hover help strings)
+* v12.1.0-rc16
 
 ### 2026-08-27
 * objects: removed "number" type declaration for "... at ..." sensing reporter

@@ -87,11 +87,11 @@ HatBlockMorph, ZOOM*/
 
 // Global stuff ////////////////////////////////////////////////////////
 
-modules.gui = '2026-September-10';
+modules.gui = '2026-September-22';
 
 // Declarations
 
-var SnapVersion = '12.1.3';
+var SnapVersion = '12.2.0';
 
 var IDE_Morph;
 var ProjectDialogMorph;
@@ -2608,6 +2608,33 @@ IDE_Morph.prototype.createCorralBar = function () {
         }
     };
 
+    this.corralBar.userMenu = () => {
+        var menu = new MenuMorph(sprite => {
+                sprite.isHiddenInCorral = !sprite.isHiddenInCorral;
+                this.createCorral(true); // keep scenes
+                this.fixLayout();
+            }),
+            on = new SymbolMorph(
+                'checkedBox',
+                MorphicPreferences.menuFontSize * 0.75
+            ),
+            off = new SymbolMorph(
+                'rectangle',
+                MorphicPreferences.menuFontSize * 0.75
+            );
+
+        this.sprites.asArray().forEach(sprite =>
+            menu.addItem(
+                [
+                    sprite.isHiddenInCorral ? off : on,
+                    sprite.name
+                ],
+                sprite
+            )
+        );
+        return menu;
+    };
+
     this.corralBar.fixLayout = function () {
         function updateDisplayOf(button) {
             if (button && button.right() > trashbutton.left() - padding) {
@@ -2657,7 +2684,7 @@ IDE_Morph.prototype.createCorral = function (keepSceneAlbum) {
     frame.alpha = 0;
 
     this.sprites.asArray().forEach(morph => {
-        if (!morph.isTemporary) {
+        if (!morph.isTemporary && !morph.isHiddenInCorral) {
             frame.contents.add(new SpriteIconMorph(morph));
         }
     });
@@ -4383,7 +4410,9 @@ IDE_Morph.prototype.removeSprite = function (sprite, enableUndelete = true) {
     this.fixLayout();
     this.currentSprite = detect(
         this.stage.children,
-        morph => morph instanceof SpriteMorph && !morph.isTemporary
+        morph => morph instanceof SpriteMorph &&
+            !morph.isTemporary &&
+            !morph.isHiddenInCorral
     ) || this.stage;
 
     this.selectSprite(this.currentSprite);
@@ -5786,8 +5815,10 @@ IDE_Morph.prototype.undelete = function (aSprite, pos) {
             aSprite.fixLayout();
             aSprite.rerender();
             this.sprites.add(aSprite);
-            this.corral.addSprite(aSprite);
-            this.selectSprite(aSprite);
+            if (!aSprite.isHiddenInCorral) {
+                this.corral.addSprite(aSprite);
+                this.selectSprite(aSprite);
+            }
             this.scene.updateTrash();
         }
     );

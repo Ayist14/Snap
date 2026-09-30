@@ -2,6 +2,21 @@
 
 ## in development:
 
+## 12.2.0:
+* **New Features:**
+    * ability to hide sprites in the corral via the corral-bar's context menu, use for pedagogical puzzles
+* **Translation Updates:**
+    * German
+
+### 2026-09-22
+* objects, gui, store: added ability to hide sprites in the corral via the corral-bar's context menu, use for pedagogical puzzles
+* incremented dev version to v12.2
+* prepared v12.2 release
+
+### 2026-09-21
+* German translation update
+* new dev version
+
 ## 12.1.3:
 * **Notable Fixes:**
     * fixed a visible stepping glitch when displaying intermediate custom reporter results

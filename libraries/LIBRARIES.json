@@ -1,451 +1,453 @@
-[
-  {
-    "fileName": "code2blocks_module.xml",
-    "name": "Code to Blocks to Code",
-    "description": "Translate text code to blocks and vice-versa",
-    "searchData": [
-      "parse code _ to blocks",
-      "encode blocks _ to text _ pretty"
-    ],
-    "categories": [
-      "operators"
-    ],
-    "translations": {
-      "de": {
-        "name": "Blöcke -> Textcode",
-        "description": "Blöcke in Textcode übersetzen und aus Textcode Blöcke erzeugen",
+﻿[
+    {
+        "fileName": "code2blocks_module.xml",
+        "name": "Code to Blocks to Code",
+        "description": "Translate text code to blocks and vice-versa",
         "searchData": [
-          "verwandle Blöcke _ in Code _ formatiert",
-          "verwandle Code _ in Blöcke"
-        ]
-      },
-      "ca": {
-        "name": "Codi textual dels blocs",
-        "description": "Obté el codi textual dels blocs i viceversa",
+            "parse code _ to blocks",
+            "encode blocks _ to text _ pretty"
+        ],
+        "categories": [
+            "operators"
+        ],
+        "translations": {
+            "de": {
+                "name": "Blöcke -> Textcode",
+                "description": "Blöcke in Textcode übersetzen und aus Textcode Blöcke erzeugen",
+                "searchData": [
+                    "verwandle Blöcke _ in Code _ formatiert",
+                    "verwandle Code _ in Blöcke"
+                ]
+            },
+            "ca": {
+                "name": "Codi textual dels blocs",
+                "description": "Obté el codi textual dels blocs i viceversa",
+                "searchData": [
+                    "blocs del codi textual _",
+                    "codi textual dels blocs _ formatats _"
+                ]
+            },
+            "es": {
+                "name": "Código textual de los bloques",
+                "description": "Genera el código textual de los bloques y viceversa"
+            },
+            "zh_CN": {
+                "name": "积木与代码互转库",
+                "description": "伪Lisp代码与积木双向转换"
+            }
+        }
+    },
+    {
+        "fileName": "OOP_module.xml",
+        "name": "OOP",
+        "description": "Data Objects with prototypical inheritance",
         "searchData": [
-          "blocs del codi textual _",
-          "codi textual dels blocs _ formatats _"
-        ]
-      },
-      "es": {
-        "name": "Código textual de los bloques",
-        "description": "Genera el código textual de los bloques y viceversa"
-      },
-      "zh_CN": {
-        "name": "积木与代码互转库",
-        "description": "伪Lisp代码与积木双向转换"
-      }
-    }
-  },
-  {
-    "fileName": "OOP_module.xml",
-    "name": "OOP",
-    "description": "Data Objects with prototypical inheritance",
-    "searchData": [
-      "object _",
-      "clone _ _",
-      "field _ of _ _",
-      "add _ to _"
-    ],
-    "categories": [
-      "lists"
-    ],
-    "translations": {
-      "de": {
+            "object _",
+            "clone _ _",
+            "field _ of _ _",
+            "add _ to _"
+        ],
+        "categories": [
+            "lists"
+        ],
+        "translations": {
+            "de": {
+                "searchData": [
+                    "Objekt _",
+                    "klone _ _",
+                    "Feld _ von _ _",
+                    "füge _ zu _ hinzu"
+                ]
+            },
+            "ca": {
+                "description": "Objectes amb herència per prototips"
+            },
+            "es": {
+                "description": "Objectos con herencia con prototipos"
+            },
+            "zh_CN": {
+                "name": "面向对象编程(OOP)库",
+                "description": "基于原型式的可继承(数据)对象"
+            }
+        }
+    },
+    {
+        "fileName": "events_module.xml",
+        "name": "Events",
+        "description": "Write scripts that react to data transitions, state changes and sensor threshold passings",
         "searchData": [
-          "Objekt _",
-          "klone _ _",
-          "Feld _ von _ _",
-          "füge _ zu _ hinzu"
-        ]
-      },
-      "ca": {
-        "description": "Objectes amb herència per prototips"
-      },
-      "es": {
-        "description": "Objectos con herencia con prototipos"
-      },
-      "zh_CN": {
-        "name": "面向对象编程(OOP)库",
-        "description": "基于原型式的可继承(数据)对象"
-      }
-    }
-  },
-  {
-    "fileName": "events_module.xml",
-    "name": "Events",
-    "description": "Write scripts that react to data transitions, state changes and sensor threshold passings",
-    "searchData": [
-      "when variable _ changes",
-      "when _ > _",
-      "when background switches to _",
-      "has _ happened?",
-      "has _ changed?",
-      "when _ changes"
-    ],
-    "categories": [
-      "variables",
-      "sensing",
-      "looks",
-      "operators",
-      "control"
-    ],
-    "translations": {
-      "de": {
-        "name": "Ereignisse",
+            "when variable _ changes",
+            "when _ > _",
+            "when background switches to _",
+            "has _ happened?",
+            "has _ changed?",
+            "when _ changes"
+        ],
+        "categories": [
+            "variables",
+            "sensing",
+            "looks",
+            "operators",
+            "control"
+        ],
+        "translations": {
+            "de": {
+                "name": "Ereignisse",
+                "searchData": [
+                    "Wenn Variable _ sich ändert",
+                    "Wenn _ > _",
+                    "Wenn Hintergrund zu _ wechselt",
+                    "hat _ sich ereignet?",
+                    "hat _ sich verändert?",
+                    "Wenn _ sich ändert"
+                ]
+            },
+            "ca": {
+                "name": "Esdeveniments",
+                "description": "Crear detectors d'esdeveniments programats pel canvi en les dades, canvis d'estat o superació del llindar definit d'un sensor"
+            },
+            "es": {
+                "name": "Eventos",
+                "description": "Crea detectores de eventos programados por el cambio de valores, cambios de estado o por superar el umbral definido en un sensor"
+            },
+            "zh_CN": {
+                "name": "更多事件库",
+                "description": "监测变量变化(包括值、舞台背景和外部传感器)"
+            }
+        }
+    },
+    {
+        "fileName": "lists_module.xml",
+        "name": "Lists",
+        "description": "A collection of useful functions for working with lists and data",
         "searchData": [
-          "Wenn Variable _ sich ändert",
-          "Wenn _ > _",
-          "Wenn Hintergrund zu _ wechselt",
-          "hat _ sich ereignet?",
-          "hat _ sich verändert?",
-          "Wenn _ sich ändert"
-        ]
-      },
-      "ca": {
-        "name": "Esdeveniments",
-        "description": "Crear detectors d'esdeveniments programats pel canvi en les dades, canvis d'estat o superació del llindar definit d'un sensor"
-      },
-      "es": {
-        "name": "Eventos",
-        "description": "Crea detectores de eventos programados por el cambio de valores, cambios de estado o por superar el umbral definido en un sensor"
-      },
-      "zh_CN": {
-        "name": "更多事件库",
-        "description": "监测变量变化(包括值、舞台背景和外部传感器)"
-      }
-    }
-  },
-  {
-    "fileName": "lists_module.xml",
-    "name": "Lists",
-    "description": "A collection of useful functions for working with lists and data",
-    "searchData": [
-      "wrap item _ of _",
-      "rotate _ by _",
-      "stretch _ by _ _",
-      "compress _ by _",
-      "mod1",
-      "plot bars _ _"
-
-    ],
-    "categories": [
-      "pen",
-      "operators",
-      "lists"
-    ],
-    "translations": {
-      "de": {
-        "name": "Listen",
-        "description": "Eine Sammlung praktischer Funktionen für die Arbeit mit Listen und Daten"
-      },
-      "ca": {
-        "name": "Llistes",
-        "description": "Col·lecció de funcions útils per treballar amb llistes i dades"
-      },
-      "es": {
-        "name": "Listas",
-        "description": "Colección de funciones útiles para trabajar con listas y datos"
-      }
-    }
-  },
-  {
-    "fileName": "colors_module.xml",
-    "name": "Colors",
-    "description": "mix, modify and transition colors",
-    "searchData": [
-      "mix _ with _ ratio _ %",
-      "color _ _ by _ %",
-      "shift _ of _ by _",
-      "transition _ over _"
-    ],
-    "categories": [
-      "pen"
-    ],
-    "translations": {
-      "de": {
-        "name": "Farben",
-        "searchData": [
-          "mische _ mit _ im Verhältnis _ %",
-          "Farbe _ _ um _ %",
-          "verschiebe _ von _ um _",
-          "Farbübergang _ Länge _"
-        ]
-      },
-      "ca": {
+            "wrap item _ of _",
+            "rotate _ by _",
+            "stretch _ by _ _",
+            "compress _ by _",
+            "mod1",
+            "plot bars _ _"
+        ],
+        "categories": [
+            "pen",
+            "operators",
+            "lists"
+        ],
+        "translations": {
+            "de": {
+                "name": "Listen",
+                "description": "Eine Sammlung praktischer Funktionen für die Arbeit mit Listen und Daten"
+            },
+            "ca": {
+                "name": "Llistes",
+                "description": "Col·lecció de funcions útils per treballar amb llistes i dades"
+            },
+            "es": {
+                "name": "Listas",
+                "description": "Colección de funciones útiles para trabajar con listas y datos"
+            }
+        }
+    },
+    {
+        "fileName": "colors_module.xml",
         "name": "Colors",
-        "description": "Modifica, barreja i obté transicions de colors."
-      },
-      "es": {
-        "name": "Colores",
-        "description": "Modifica, mezcla y obtén transiciones de colores"
-      },
-      "it": {
-        "name": "Colori"
-      },
-      "ti": {
-        "name": "ሕብርታት"
-      },
-      "ua": {
-        "name": "Кольори"
-      },
-      "zh_CN": {
-        "name": "颜色调配库",
-        "description": "色彩调和、调整与渐变"
-      }
-    }
-  },
-  {
-    "fileName": "costume_composition_module.xml",
-    "name": "Pictures",
-    "description": "Compose new costumes from existing ones, and programmatically generate pictures of blocks and scripts.",
-    "searchData": [
-      "above",
-      "beside",
-      "over"
-    ],
-    "categories": [
-      "looks"
-    ],
-    "translations": {
-      "de": {
-        "name": "Bilder",
-        "description": "Neue Kostüme aus vorhandenen zusammenfügen, und Bilder von Blöcken und Programmen automatisch generieren.",
+        "description": "mix, modify and transition colors",
         "searchData": [
-          "über",
-          "neben",
-          "auf"
-        ]
-      },
-      "ca": {
-        "name": "Imatges",
-        "description": "Crea nous vestits a partir de vestits existents i programa la generació d'imatges de blocs i programes."
-      },
-      "es": {
-        "name": "Imágenes",
-        "description": "Crea nuevos vestidos a partir de vestidos existentes y programa la generación de imágenes de bloques y programas."
-      }
-    }
-  },
-  {
-    "fileName": "shapes_module.xml",
-    "name": "Shapes",
-    "description": "Create, combine, transform and display geometric shapes for a functions-first approach to teaching programming. Inspired by Pyret's image library, see: https://pyret.org/docs/horizon/image.html - under development",
-    "searchData": [
-      "draw  _",
-      "costume from _",
-      "square _ _",
-      "circle _ _",
-      "rectangle w: _ h: _ _",
-      "ellipse w: _ h: _ _",
-      "path _",
-      "rotate _ by _",
-      "scale _ by _",
-      "move _ by _",
-      "beside _ _ _ align y: _",
-      "above _ _ _ align x: _",
-      "overlay _ _ _ align x: _ y: _",
-      "layer _",
-      "left of _",
-      "right of _",
-      "bottom of _",
-      "top of _",
-      "center x of _",
-      "center y of _",
-      "centroid x of _",
-      "centroid y of _",
-      "width of _",
-      "height of _"
-    ],
-    "categories": [
-      "Shapes"
-    ],
-    "translations": {
-      "ca": {
-        "name": "Formes",
-        "description": "Crea, combina, transforma i mostra formes geomètriques per treballar amb un enfoc de programació centrat en funcions. Inspirat per la biblioteca de imatges que té pyret.org, https://pyret.org/docs/horizon/image.html - en desenvolupament"
-      },
-      "es": {
-        "name": "Formas",
-        "description": "Crea, combina, transforma y muestra formas geométricas para trabajar con un enfoque de programación centrado en funciones. Inspirado en la biblioteca de imágenes de pyret.org, https://pyret.org/docs/horizon/image.html - en desarrollo"
-      }
-    }
-  },
-  {
-    "fileName": "tables_module.xml",
-    "name": "Tables",
-    "description": "Create, select, filter, order, transform, extend and analyze tabular data sets with powerful functions. Modeled after Pyret's Tables, see https://pyret.org/docs/latest/tables.html. Thanks to Shriram Krishnamurthi for his inspiration, feedback and advice. Example project (under development): https://snap.berkeley.edu/versions/dev/snap.html#present:Username=jens&ProjectName=Shriram%20Tables&editMode",
-    "searchData": [
-      "table from _",
-      "header of _",
-      "cells of _",
-      "select _ from _",
-      "sieve _ using _ _",
-      "order _ _",
-      "transform _ using _ _",
-      "extend _ using _ _",
-      "running sum of _",
-      "difference of _",
-      "difference from _ of _",
-      "running mean of _",
-      "running min of _",
-      "running max of _",
-      "running reduce _",
-      "running fold _ _",
-      "pipe _",
-      "let _ then report _"
-    ],
-    "categories": [
-      "control",
-      "operators",
-      "other",
-      "Tables"
-    ],
-    "translations": {
-      "ca": {
-        "name": "Taules",
-        "description": "Crea, selecciona, filtra, ordena, transforma, amplia i analitza conjunts de dades tabulars amb funcions eficients. Inspirat en les taules de pyret.org,  https://pyret.org/docs/latest/tables.html. Agraïments a Shriram Krishnamurthi per la seva inspiració, retroalimentació i consell. Projecte d'exemple (en desenvolupament): https://snap.berkeley.edu/versions/dev/snap.html#present:Username=jens&ProjectName=Shriram%20Tables&editMode"
-      },
-      "es": {
-        "name": "Tablas",
-        "description": "Crea, selecciona, filtra, ordena, transforma, amplía i analiza conjuntos de datos tabulares con funciones eficientes. Inspirado en les tablas de pyret.org,  https://pyret.org/docs/latest/tables.html. Agradecimientos a Shriram Krishnamurthi por su inspiración, retroalimentación i consejo. Proyecto de ejemplo (en desarrollo): https://snap.berkeley.edu/versions/dev/snap.html#present:Username=jens&ProjectName=Shriram%20Tables&editMode"
-      },
-      "zh_CN": {
-        "name": "表格处理库",
-        "description": "使用强大、通用的函数创建、选择、筛选、排序、转换、扩展和分析表格数据集。其设计灵感源自 Pyret 的 Tables 数据，详情可参阅：https://pyret.org/docs/latest/tables.html。感谢 Shriram Krishnamurthi 的启发、反馈与建议。示例作品(仍在开发中)：https://snap.berkeley.edu/versions/dev/snap.html#present:Username=jens&ProjectName=Shriram%20Tables&editMode"
-      }
-    }
-  },
-  {
-    "fileName": "presentations_module.xml",
-    "name": "Presentations",
-    "description": "Create simple slide shows and presentations, mixing text, typography, images and animations, and provide localizations and translations for them",
-    "searchData": [
-      "presentation",
-      "slide",
-      "buttons",
-      "align",
-      "next",
-      "back"
-
-    ],
-    "categories": [
-      "Presentations"
-    ],
-    "translations": {
-      "de": {
-        "name": "Präsentationen",
-        "description": "Einfache Präsentation und Slideshows mit Text, Typographie, Grafiken und Animationen erstellen, und mit Übersetzungen versehen"
-      },
-      "ca": {
-        "name": "Presentacions",
-        "description": "Crea presentacions de diapositives senzilles amb text, tipografies, imatges i animacions, amb suport a la localització/traducció del contingut"
-      },
-      "es": {
-        "name": "Presentaciones",
-        "description": "Crea presentaciones de diapositivas sencillas con texto, tipografías, imágenes y animaciones, con soporte a la localización/traducción del contenido"
-      }
-    }
-  },
-  {
-    "fileName": "neural_networks_module.xml",
-    "name": "Neural Networks",
-    "description": "Classify data vectors using neural networks, train and validate your own deep neural models",
-    "searchData": [
-      "plot bars _ _",
-      "render neural model _ _",
-      "_ times _",
-      "normalize table _",
-      "normalization for table _",
-      "partition table _ by _",
-      "generate _ for _ in _ _",
-      "clone _ _",
-      "object _",
-      "new neural network _",
-      "_ network _ on _",
-      "_ _ with network _",
-      "_ of network _",
-      "_ of network _ to _",
-      "blockify _",
-      "new perceptron sprite"
-    ],
-    "categories": [
-      "pen",
-      "control",
-      "lists",
-      "Neural Networks"
-    ],
-    "translations": {
-      "de": {
-        "name": "Neuronale Netzwerke",
-        "description": "Datenvektoren mit eigenen tiefen neuronalen Netzwerken klassifizieren",
+            "mix _ with _ ratio _ %",
+            "color _ _ by _ %",
+            "shift _ of _ by _",
+            "transition _ over _"
+        ],
+        "categories": [
+            "pen"
+        ],
+        "translations": {
+            "de": {
+                "name": "Farben",
+                "searchData": [
+                    "mische _ mit _ im Verhältnis _ %",
+                    "Farbe _ _ um _ %",
+                    "verschiebe _ von _ um _",
+                    "Farbübergang _ Länge _"
+                ]
+            },
+            "ca": {
+                "name": "Colors",
+                "description": "Modifica, barreja i obté transicions de colors."
+            },
+            "es": {
+                "name": "Colores",
+                "description": "Modifica, mezcla y obtén transiciones de colores"
+            },
+            "it": {
+                "name": "Colori"
+            },
+            "ti": {
+                "name": "ሕብርታት"
+            },
+            "ua": {
+                "name": "Кольори"
+            },
+            "zh_CN": {
+                "name": "颜色调配库",
+                "description": "色彩调和、调整与渐变"
+            }
+        }
+    },
+    {
+        "fileName": "costume_composition_module.xml",
+        "name": "Pictures",
+        "description": "Compose new costumes from existing ones, and programmatically generate pictures of blocks and scripts.",
         "searchData": [
-          "male Balken _ _",
-          "male neurales Modell _ _",
-          "_ mal _",
-          "normalisiere Tabelle _",
-          "Normalisierung für Tabelle _",
-          "teile Tabelle _ im Verhältnis _",
-          "generiere _ für _ in _ _",
-          "klone _ _",
-          "Objekt _",
-          "neues neuronales Netzwerk _",
-          "_ Netzwerk _ mit _",
-          "_ _ mit Netzwerk _",
-          "_ von Netzwerk _",
-          "_ von Netzwerk _ auf _",
-          "blockifiziere _",
-          "neues Perzeptron Objekt"
-        ]
-      },
-      "ca": {
-        "name": "Xarxes Neuronals",
-        "description": "Classifica dades vectoritzades utilitzant xarxes neuronals. Entrena i valida els teus propis models interns."
-      },
-      "es": {
-        "name": "Redes Neuronales",
-        "description": "Clasifica datos vectorizados utilizando redes neuronales. Entrena y valida tus propios modelos internos."
-      },
-      "zh_CN": {
-        "name": "神经网络训练库",
-        "description": "借助神经网络对数据向量进行分类，训练并验证你自己的深度神经网络模型。本库完全用Snap!本身实现"
-      }
-    }
-  },
-  {
-    "fileName": "edge AI.xml",
-    "name": "Computer Vision",
-    "description": "Detect hand, face and body features or gestures by using Google's AI Edge computer vision API",
-    "searchData": [
-      "hand landmarks on _",
-      "hand handedness on _",
-      "hand gesture on _",
-      "finger _ in hand landmarks _",
-      "face landmarks on _",
-      "feature _ in face landmarks _",
-      "face bounds on _",
-      "body landmarks on _",
-      "feature _ in body landmarks _",
-      "feature _ touching _"
-    ],
-    "categories": [
-      "Edge Computer Vision"
-    ],
-    "translations": {
-      "ca": {
-        "name": "Visió artificial",
-        "description": "Detecta trets o gestos de la mà, la cara i el cos mitjançant l'API de visió artificial AI Edge de Google"
-      },
-      "es": {
-        "name": "Visión artificial",
-        "description": "Detecta características o gestos de manos, rostros y cuerpo mediante la API de visión artificial AI Edge de Google"
-      },
-      "zh_CN": {
-        "name": "Edge AI视觉检测库",
-        "description": "通过 Google 的 Edge AI 计算机视觉 API 检测手部、人脸和身体特征或手势"
-      }
-    }
-  },
+            "above",
+            "beside",
+            "over"
+        ],
+        "categories": [
+            "looks"
+        ],
+        "translations": {
+            "de": {
+                "name": "Bilder",
+                "description": "Neue Kostüme aus vorhandenen zusammenfügen, und Bilder von Blöcken und Programmen automatisch generieren.",
+                "searchData": [
+                    "über",
+                    "neben",
+                    "auf"
+                ]
+            },
+            "ca": {
+                "name": "Imatges",
+                "description": "Crea nous vestits a partir de vestits existents i programa la generació d'imatges de blocs i programes."
+            },
+            "es": {
+                "name": "Imágenes",
+                "description": "Crea nuevos vestidos a partir de vestidos existentes y programa la generación de imágenes de bloques y programas."
+            }
+        }
+    },
+    {
+        "fileName": "shapes_module.xml",
+        "name": "Shapes",
+        "description": "Create, combine, transform and display geometric shapes for a functions-first approach to teaching programming. Inspired by Pyret's image library, see: https://pyret.org/docs/horizon/image.html - under development",
+        "searchData": [
+            "draw  _",
+            "costume from _",
+            "square _ _",
+            "circle _ _",
+            "rectangle w: _ h: _ _",
+            "ellipse w: _ h: _ _",
+            "path _",
+            "rotate _ by _",
+            "scale _ by _",
+            "move _ by _",
+            "beside _ _ _ align y: _",
+            "above _ _ _ align x: _",
+            "overlay _ _ _ align x: _ y: _",
+            "layer _",
+            "left of _",
+            "right of _",
+            "bottom of _",
+            "top of _",
+            "center x of _",
+            "center y of _",
+            "centroid x of _",
+            "centroid y of _",
+            "width of _",
+            "height of _"
+        ],
+        "categories": [
+            "Shapes"
+        ],
+        "translations": {
+            "ca": {
+                "name": "Formes",
+                "description": "Crea, combina, transforma i mostra formes geomètriques per treballar amb un enfoc de programació centrat en funcions. Inspirat per la biblioteca de imatges que té pyret.org, https://pyret.org/docs/horizon/image.html - en desenvolupament"
+            },
+            "es": {
+                "name": "Formas",
+                "description": "Crea, combina, transforma y muestra formas geométricas para trabajar con un enfoque de programación centrado en funciones. Inspirado en la biblioteca de imágenes de pyret.org, https://pyret.org/docs/horizon/image.html - en desarrollo"
+            },
+            "zh_CN": {
+                "name": "图形库",
+                "description": "创建、组合、变换和显示几何图形，以支持“函数优先”的编程教学方法。灵感来源于 Pyret 的图像库，参见：https://pyret.org/docs/horizon/image.html (正在开发中)"
+            }
+        }
+    },
+    {
+        "fileName": "tables_module.xml",
+        "name": "Tables",
+        "description": "Create, select, filter, order, transform, extend and analyze tabular data sets with powerful functions. Modeled after Pyret's Tables, see https://pyret.org/docs/latest/tables.html. Thanks to Shriram Krishnamurthi for his inspiration, feedback and advice. Example project (under development): https://snap.berkeley.edu/versions/dev/snap.html#present:Username=jens&ProjectName=Shriram%20Tables&editMode",
+        "searchData": [
+            "table from _",
+            "header of _",
+            "cells of _",
+            "select _ from _",
+            "sieve _ using _ _",
+            "order _ _",
+            "transform _ using _ _",
+            "extend _ using _ _",
+            "running sum of _",
+            "difference of _",
+            "difference from _ of _",
+            "running mean of _",
+            "running min of _",
+            "running max of _",
+            "running reduce _",
+            "running fold _ _",
+            "pipe _",
+            "let _ then report _"
+        ],
+        "categories": [
+            "control",
+            "operators",
+            "other",
+            "Tables"
+        ],
+        "translations": {
+            "ca": {
+                "name": "Taules",
+                "description": "Crea, selecciona, filtra, ordena, transforma, amplia i analitza conjunts de dades tabulars amb funcions eficients. Inspirat en les taules de pyret.org,  https://pyret.org/docs/latest/tables.html. Agraïments a Shriram Krishnamurthi per la seva inspiració, retroalimentació i consell. Projecte d'exemple (en desenvolupament): https://snap.berkeley.edu/versions/dev/snap.html#present:Username=jens&ProjectName=Shriram%20Tables&editMode"
+            },
+            "es": {
+                "name": "Tablas",
+                "description": "Crea, selecciona, filtra, ordena, transforma, amplía i analiza conjuntos de datos tabulares con funciones eficientes. Inspirado en les tablas de pyret.org,  https://pyret.org/docs/latest/tables.html. Agradecimientos a Shriram Krishnamurthi por su inspiración, retroalimentación i consejo. Proyecto de ejemplo (en desarrollo): https://snap.berkeley.edu/versions/dev/snap.html#present:Username=jens&ProjectName=Shriram%20Tables&editMode"
+            },
+            "zh_CN": {
+                "name": "表格库",
+                "description": "使用强大、通用的函数创建、选择、筛选、排序、转换、扩展和分析表格数据集。其设计灵感源自 Pyret 的 Tables 数据，详情可参阅：https://pyret.org/docs/latest/tables.html。感谢 Shriram Krishnamurthi 的启发、反馈与建议。示例作品(仍在开发中)：https://snap.berkeley.edu/versions/dev/snap.html#present:Username=jens&ProjectName=Shriram%20Tables&editMode"
+            }
+        }
+    },
+    {
+        "fileName": "presentations_module.xml",
+        "name": "Presentations",
+        "description": "Create simple slide shows and presentations, mixing text, typography, images and animations, and provide localizations and translations for them",
+        "searchData": [
+            "presentation",
+            "slide",
+            "buttons",
+            "align",
+            "next",
+            "back"
+        ],
+        "categories": [
+            "Presentations"
+        ],
+        "translations": {
+            "de": {
+                "name": "Präsentationen",
+                "description": "Einfache Präsentation und Slideshows mit Text, Typographie, Grafiken und Animationen erstellen, und mit Übersetzungen versehen"
+            },
+            "ca": {
+                "name": "Presentacions",
+                "description": "Crea presentacions de diapositives senzilles amb text, tipografies, imatges i animacions, amb suport a la localització/traducció del contingut"
+            },
+            "es": {
+                "name": "Presentaciones",
+                "description": "Crea presentaciones de diapositivas sencillas con texto, tipografías, imágenes y animaciones, con soporte a la localización/traducción del contenido"
+            }
+        }
+    },
+    {
+        "fileName": "neural_networks_module.xml",
+        "name": "Neural Networks",
+        "description": "Classify data vectors using neural networks, train and validate your own deep neural models",
+        "searchData": [
+            "plot bars _ _",
+            "render neural model _ _",
+            "_ times _",
+            "normalize table _",
+            "normalization for table _",
+            "partition table _ by _",
+            "generate _ for _ in _ _",
+            "clone _ _",
+            "object _",
+            "new neural network _",
+            "_ network _ on _",
+            "_ _ with network _",
+            "_ of network _",
+            "_ of network _ to _",
+            "blockify _",
+            "new perceptron sprite"
+        ],
+        "categories": [
+            "pen",
+            "control",
+            "lists",
+            "Neural Networks"
+        ],
+        "translations": {
+            "de": {
+                "name": "Neuronale Netzwerke",
+                "description": "Datenvektoren mit eigenen tiefen neuronalen Netzwerken klassifizieren",
+                "searchData": [
+                    "male Balken _ _",
+                    "male neurales Modell _ _",
+                    "_ mal _",
+                    "normalisiere Tabelle _",
+                    "Normalisierung für Tabelle _",
+                    "teile Tabelle _ im Verhältnis _",
+                    "generiere _ für _ in _ _",
+                    "klone _ _",
+                    "Objekt _",
+                    "neues neuronales Netzwerk _",
+                    "_ Netzwerk _ mit _",
+                    "_ _ mit Netzwerk _",
+                    "_ von Netzwerk _",
+                    "_ von Netzwerk _ auf _",
+                    "blockifiziere _",
+                    "neues Perzeptron Objekt"
+                ]
+            },
+            "ca": {
+                "name": "Xarxes Neuronals",
+                "description": "Classifica dades vectoritzades utilitzant xarxes neuronals. Entrena i valida els teus propis models interns."
+            },
+            "es": {
+                "name": "Redes Neuronales",
+                "description": "Clasifica datos vectorizados utilizando redes neuronales. Entrena y valida tus propios modelos internos."
+            },
+            "zh_CN": {
+                "name": "神经网络库",
+                "description": "借助神经网络对数据向量进行分类，训练并验证你自己的深度神经网络模型。本库完全用Snap!本身实现"
+            }
+        }
+    },
+    {
+        "fileName": "edge AI.xml",
+        "name": "Computer Vision",
+        "description": "Detect hand, face and body features or gestures by using Google's AI Edge computer vision API",
+        "searchData": [
+            "hand landmarks on _",
+            "hand handedness on _",
+            "hand gesture on _",
+            "finger _ in hand landmarks _",
+            "face landmarks on _",
+            "feature _ in face landmarks _",
+            "face bounds on _",
+            "body landmarks on _",
+            "feature _ in body landmarks _",
+            "feature _ touching _"
+        ],
+        "categories": [
+            "Edge Computer Vision"
+        ],
+        "translations": {
+            "ca": {
+                "name": "Visió artificial",
+                "description": "Detecta trets o gestos de la mà, la cara i el cos mitjançant l'API de visió artificial AI Edge de Google"
+            },
+            "es": {
+                "name": "Visión artificial",
+                "description": "Detecta características o gestos de manos, rostros y cuerpo mediante la API de visión artificial AI Edge de Google"
+            },
+            "zh_CN": {
+                "name": "Edge AI视觉检测库",
+                "description": "通过 Google 的 Edge AI 计算机视觉 API 检测手部、人脸和身体特征或手势"
+            }
+        }
+    },
   {
     "fileName": "~",
     "name": "~"

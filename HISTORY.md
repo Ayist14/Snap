@@ -2,6 +2,42 @@
 
 ## in development:
 
+* **Notable Changes:**
+    * unring reporters dropped into ring-slots that are declared to report a block or function (command, reporter, predicate, hat, script)
+    * added "script" return type declaration to "parse code" reporter in the code2blocks library
+    * added ability to hide the stage in the corral via the corral-bar's context menu, use for pedagogical puzzles (only!)
+* **Notable Fixes:**
+    * mark custom predicate blocks to always report a Boolean data type
+
+### 2026-10-05
+* new dev version
+* blocks, objects: unring reporters dropped into ring-slots that are declared to report a block or function (command, reporter, predicate, hat, script). This also addresses #3575
+* byob: mark custom predicate blocks to always report a Boolean data type
+* code2blocks library: added "script" return type declaration to "parse code" reporter
+* gui, objects, store: added ability to hide the stage in the corral via the corral-bar's context menu, use for pedagogical puzzles (only!)
+
+## 12.2.2:
+* **Notable Changes:**
+    * tables ADT library: added "export" option to tables' context menus
+    * neural networks & plot bars libraries: updated the "plot bars" command - removed input type enforcing
+* **Translation Updates:**
+    * German
+
+### 2026-10-02
+* tables: added "export" option to table's context menus (for table ADTs)
+* neural networks library: updated the "plot bars" command - removed input type enforcing
+* plot bars library: updated the "plot bars" command - removed input type enforcing
+* German translation update, changed translation of dimensions that can also be used for directions ("left", "top")
+* prepared v12.2.2 patch
+
+## 12.2.1:
+* no notables changes
+* no fixes
+* just some extension tweaks for evil educators with no courage or imagination
+
+### 2026-10-01
+* extension tweaks for evil educators with no courage or imagination
+
 ## 12.2.0:
 * **New Features:**
     * ability to hide sprites in the corral via the corral-bar's context menu, use for pedagogical puzzles

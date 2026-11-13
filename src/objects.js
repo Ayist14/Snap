@@ -96,7 +96,7 @@ CustomBlockDefinition, exportEmbroidery, CustomHatBlockMorph, HandMorph*/
 
 /*jshint esversion: 11*/
 
-modules.objects = '2026-September-22';
+modules.objects = '2026-October-05';
 
 var SpriteMorph;
 var StageMorph;
@@ -2018,6 +2018,7 @@ SpriteMorph.prototype.primitiveBlocks = function () {
         },
         reportJSFunction: {
             type: 'reporter',
+            reports: 'reporter',
             category: 'operators',
             spec: 'JavaScript function ( %mult%s ) { %code }',
             code: 'js'
@@ -2041,6 +2042,7 @@ SpriteMorph.prototype.primitiveBlocks = function () {
         reportCompiled: { // experimental
             dev: true,
             type: 'reporter',
+            reports: 'reporter',
             category: 'operators',
             spec: 'compile %repRing for %n args',
             defaults: [null, 0]
@@ -8728,6 +8730,9 @@ SpriteMorph.prototype.allHatBlocksForKey = function (key) {
 };
 
 SpriteMorph.prototype.allHatBlocksForInteraction = function (interaction) {
+    if (interaction === 'init') {
+        return this.allHatBlocksFor('__init__');
+    }
     return this.scripts.children.filter(morph => {
         if (morph.selector) {
             if (morph.selector === 'receiveInteraction') {
@@ -10675,6 +10680,7 @@ StageMorph.prototype.init = function (globals) {
     this.isFastTracked = false;
     this.enableCustomHatBlocks = true;
     this.cloneCount = 0;
+    this.isHiddenInCorral = false;
 
     this.timerStart = Date.now();
     this.tempo = 60; // bpm
@@ -11595,6 +11601,7 @@ StageMorph.prototype.fireGreenFlagEvent = function () {
         ide = this.parentThatIsA(IDE_Morph);
 
     this.removeAllClones();
+    this.runInitScripts();
     this.children.concat(this).forEach(morph => {
         if (isSnapObject(morph)) {
             morph.allHatBlocksFor('__shout__go__').forEach(block => {
@@ -11635,6 +11642,18 @@ StageMorph.prototype.runStopScripts = function () {
     this.children.forEach(morph => {
         if (morph instanceof SpriteMorph) {
             morph.receiveUserInteraction('stopped', true, true);
+        }
+    });
+};
+
+StageMorph.prototype.runInitScripts = function () {
+    // Allow each sprite to run one first step before sending the
+    // green flag event.
+    // usage example: reset the sprite to its original state
+    this.receiveUserInteraction('init', true, true);
+    this.children.forEach(morph => {
+        if (morph instanceof SpriteMorph) {
+            morph.receiveUserInteraction('init', true, true);
         }
     });
 };
@@ -12207,7 +12226,9 @@ StageMorph.prototype.userMenu = function () {
         // menu.addItem('help', 'nop');
         return menu;
     }
-    menu.addItem("edit", 'edit');
+    if (!this.isHiddenInCorral) {
+        menu.addItem("edit", 'edit');
+    }
     menu.addItem("show all", 'showAll');
     menu.addItem(
         "pic...",

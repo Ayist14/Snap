@@ -1,35 +1,37 @@
 [
   {
-      "fileName": "code2blocks_module.xml",
-      "name": "Code to Blocks to Code",
-      "description": "Translate text code to blocks and vice-versa",
-      "searchData": [
-          "parse code _ to blocks",
-          "encode blocks _ to text _ pretty"
-      ],
-      "categories": [
-          "operators"
-      ],
-      "translations": {
-          "de": {
-              "searchData": [
-                  "verwandle Code _ in Blöcke\rca",
-                  "verwandle Blöcke _ in Code _ formatiert\rca"
-              ]
-          },
-          "ca": {
-              "name": "Codi textual dels blocs",
-              "description": "Obté el codi textual dels blocs i viceversa",
-              "searchData": [
-                  "blocs del codi textual _",
-                  "codi textual dels blocs _ formatats _"
-              ]
-          },
-          "zh_CN": {
-              "name": "积木与代码互转库",
-              "description": "伪Lisp代码与积木双向转换"
-          }
+    "fileName": "code2blocks_module.xml",
+    "name": "Code to Blocks to Code",
+    "description": "Translate text code to blocks and vice-versa",
+    "searchData": [
+      "parse code _ to blocks",
+      "encode blocks _ to text _ pretty"
+    ],
+    "categories": [
+      "operators"
+    ],
+    "translations": {
+      "de": {
+        "name": "Von Blöcken zu Textcode und zurück",
+        "description": "Blöcke in Textcode übersetzen und aus Textcode Blöcke erzeugen",
+        "searchData": [
+          "verwandle Code _ in Blöcke\rca",
+          "verwandle Blöcke _ in Code _ formatiert\rca"
+        ]
+      },
+      "ca": {
+        "name": "Codi textual dels blocs",
+        "description": "Obté el codi textual dels blocs i viceversa",
+        "searchData": [
+          "blocs del codi textual _",
+          "codi textual dels blocs _ formatats _"
+        ]
+      },
+      "zh_CN": {
+        "name": "积木与代码互转库",
+        "description": "伪Lisp代码与积木双向转换"
       }
+    }
   },
   {
       "fileName": "OOP_module.xml",

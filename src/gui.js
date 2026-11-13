@@ -87,11 +87,11 @@ HatBlockMorph, ZOOM*/
 
 // Global stuff ////////////////////////////////////////////////////////
 
-modules.gui = '2026-September-22';
+modules.gui = '2026-October-05';
 
 // Declarations
 
-var SnapVersion = '12.2.0';
+var SnapVersion = '12.2.3-dev';
 
 var IDE_Morph;
 var ProjectDialogMorph;
@@ -1619,6 +1619,7 @@ IDE_Morph.prototype.createControlBar = function () {
 
     this.controlBar.refreshSlider = function () {
         if (Process.prototype.enableSingleStepping && !myself.isAppMode) {
+            slider.value = Process.prototype.flashTime * 100 + 1;
             slider.fixLayout();
             slider.rerender();
             slider.show();
@@ -2632,6 +2633,16 @@ IDE_Morph.prototype.createCorralBar = function () {
                 sprite
             )
         );
+        if (this.sprites.length() > 0) {
+            menu.addLine();
+        }
+        menu.addItem(
+            [
+                this.stage.isHiddenInCorral ? off : on,
+                this.stage.name
+            ],
+            this.stage
+        );
         return menu;
     };
 
@@ -2671,6 +2682,9 @@ IDE_Morph.prototype.createCorral = function (keepSceneAlbum) {
     this.corral.stageIcon = new SpriteIconMorph(this.stage);
     this.corral.stageIcon.isDraggable = false;
     this.corral.add(this.corral.stageIcon);
+    if (this.stage.isHiddenInCorral) {
+        this.corral.stageIcon.hide();
+    }
 
     frame = new ScrollFrameMorph(null, null, this.sliderColor);
     frame.acceptsDrops = false;

@@ -96,7 +96,7 @@ CustomBlockDefinition, exportEmbroidery, CustomHatBlockMorph, HandMorph*/
 
 /*jshint esversion: 11*/
 
-modules.objects = '2026-October-05';
+modules.objects = '2026-November-08';
 
 var SpriteMorph;
 var StageMorph;
@@ -6179,18 +6179,22 @@ SpriteMorph.prototype.newClone = function (immediately) {
 };
 
 SpriteMorph.prototype.newTurtleSprite = function () {
-    var ide = this.parentThatIsA(IDE_Morph),
+    var stage = this.parentThatIsA(StageMorph),
+        ide,
         sprite;
     if (this.isCorpse) {
         throw new Error('cannot operate on a deleted sprite');
     }
-    if (ide.stage && ide.stage.cloneCount <= 5000) {
-        sprite = new SpriteMorph(ide.globalVariables);
+    if (stage && stage.cloneCount <= 5000) {
+        sprite = new SpriteMorph(this.globalVariables());
         sprite.isTemporary = true;
-        sprite.cloneOriginName = ide.newSpriteName(sprite.name);
+        ide = stage.parentThatIsA(IDE_Morph);
+        if (ide) {
+            sprite.cloneOriginName = ide.newSpriteName(sprite.name);
+        }
         sprite.setCenter(this.center());
-        ide.stage.add(sprite);
-        ide.stage.cloneCount += 1;
+        stage.add(sprite);
+        stage.cloneCount += 1;
         sprite.fixLayout();
         sprite.rerender();
     } else {
@@ -6895,6 +6899,7 @@ SpriteMorph.prototype.stampOnPenTrails = function () {
     ctx.scale(1 / stage.scale, 1 / stage.scale);
     ctx.globalAlpha = this.alpha;
     ctx.globalCompositeOperation = this.blendingMode();
+    // ctx.imageSmoothingEnabled = false;
     ctx.drawImage(
         img,
         this.left() - stage.left(),
@@ -7163,6 +7168,7 @@ SpriteMorph.prototype.blitOn = function (target, mask = 'source-atop') {
     ctx.scale(relScale, relScale);
     ctx.globalAlpha = this.alpha;
     ctx.globalCompositeOperation = mask;
+    // ctx.imageSmoothingEnabled = false;
     ctx.drawImage(sourceCostume.contents, pos.x, pos.y);
 
     // make the target wear the new costume
@@ -11601,6 +11607,7 @@ StageMorph.prototype.fireGreenFlagEvent = function () {
         ide = this.parentThatIsA(IDE_Morph);
 
     this.removeAllClones();
+    this.threads.stopAll();
     this.runInitScripts();
     this.children.concat(this).forEach(morph => {
         if (isSnapObject(morph)) {
@@ -14089,6 +14096,7 @@ Costume.prototype.shrinkWrap = function () {
         pic = newCanvas(ext, true),
         ctx = pic.getContext('2d');
 
+    // ctx.imageSmoothingEnabled = false;
     ctx.drawImage(
         this.contents,
         bb.origin.x,
@@ -14176,6 +14184,7 @@ Costume.prototype.copy = function () {
         cpy,
         ctx;
     ctx = canvas.getContext('2d');
+    // ctx.imageSmoothingEnabled = false;
     ctx.drawImage(this.contents, 0, 0);
     cpy = new Costume(canvas, this.name ? copy(this.name) : null);
     cpy.rotationCenter = this.rotationCenter.copy();
@@ -14402,8 +14411,8 @@ Costume.prototype.thumb = function (extentPoint) {
                 (extentPoint.x / w),
                 (extentPoint.y / h)
             ),
-            xOffset = (extentPoint.x - (w * scale)) / 2,
-            yOffset = (extentPoint.y - (h * scale)) / 2;
+            xOffset = (extentPoint.x - (w * scale)) / 4,
+            yOffset = (extentPoint.y - (h * scale)) / 4;
 
         ctx.save();
         ctx.scale(scale, scale);
@@ -15377,7 +15386,8 @@ CellMorph.prototype.createContents = function () {
             && (this.contentsMorph.list === this.contents),
         isSameTable = this.contentsMorph instanceof TableFrameMorph
             && (this.contentsMorph.tableMorph.table === this.contents ||
-                (this.contents?.isADT && this.contents.isADT()));
+                (this.contents.isADT?.() &&
+                this.contentsMorph.tableMorph.table.isADT?.()));
 
     if (this.isBig) {
         fontSize = fontSize * 1.5;
@@ -15568,23 +15578,20 @@ CellMorph.prototype.dataAsMorph = function (data) {
         };
     } else if (data instanceof List) {
         if (data.isADT()) {
-            // attempt to render the '_morph' method for a custom view.
-            // since in this situation we don't have a full Snap! process
-            // this will fail in most cases (unless there is a JS extension)
-            // as a fallback render a box symbol representing the ADT
+            // attempt to synchronously render the '_morph' method
+            // for a custom view. As a fallback render a box symbol
             try {
-                contents = invoke(
-                    data.lookup('_morph'),
-                    new List([data]),
-                    data, // support "this(object)"
-                    500
-                );
-                if (!(contents instanceof Morph)) {
-                    return this.dataAsMorph(contents);
+                let proc = new Process(null, new StageMorph());
+                proc.pushContext();
+                proc.evaluate(proc.reportListItem('_morph', data));
+                contents = proc.rawCompute(500);
+                if (!contents.isMorph) {
+                    contents = this.dataAsMorph(contents);
                 }
             } catch {
                 contents = new SymbolMorph('cube', 30);
             }
+            this.version = data.lastChanged;
         } else {
             setupList();
         }
@@ -15634,6 +15641,17 @@ CellMorph.prototype.update = function () {
         this.fixLayout();
         this.rerender();
         this.version = this.contents.version;
+    }
+};
+
+CellMorph.prototype.updateCustomSwatch = function () {
+    // special case for observing ADTs
+    if (!this.contents.isADT?.()) {
+        return;
+    }
+    if (this.version !== this.contents.lastChanged) {
+        this.fixLayout();
+        this.rerender();
     }
 };
 
@@ -15951,6 +15969,8 @@ WatcherMorph.prototype.update = function () {
         this.cellMorph.contentsMorph.update();
     } else if (isSnapObject(this.cellMorph.contents)) {
         this.cellMorph.update();
+    } else if (this.cellMorph.contents?.isADT?.()) {
+        this.cellMorph.updateCustomSwatch();
     }
 };
 

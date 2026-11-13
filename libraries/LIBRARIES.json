@@ -1,10 +1,6 @@
-    "name": "Code to Blocks to Code",
-    "description": "Translate text code to blocks and vice-versa",
-      "encode blocks _ to text _ pretty"
-    ],
-    "categories": [
-      "operators"
-          "verwandle Blöcke _ in Code _ formatiert\rca"
+﻿[
+    {
+        "fileName": "code2blocks_module.xml",
         "name": "Code to Blocks to Code",
         "description": "Translate text code to blocks and vice-versa",
         "searchData": [
@@ -12,6 +8,7 @@
             "encode blocks _ to text _ pretty"
         ],
         "categories": [
+            "operators"
         ],
         "translations": {
             "de": {
@@ -19,6 +16,38 @@
                 "description": "Blöcke in Textcode übersetzen und aus Textcode Blöcke erzeugen",
                 "searchData": [
                     "verwandle Blöcke _ in Code _ formatiert",
+                    "verwandle Code _ in Blöcke"
+                ]
+            },
+            "ca": {
+                "name": "Codi textual dels blocs",
+                "description": "Obté el codi textual dels blocs i viceversa",
+                "searchData": [
+                    "blocs del codi textual _",
+                    "codi textual dels blocs _ formatats _"
+                ]
+            },
+            "es": {
+                "name": "Código textual de los bloques",
+                "description": "Genera el código textual de los bloques y viceversa"
+            },
+            "zh_CN": {
+                "name": "积木与代码互转库",
+                "description": "伪Lisp代码与积木双向转换"
+            }
+        }
+    },
+    {
+        "fileName": "OOP_module.xml",
+        "name": "OOP",
+        "description": "Data Objects with prototypical inheritance",
+        "searchData": [
+            "object _",
+            "clone _ _",
+            "field _ of _ _",
+            "add _ to _"
+        ],
+        "categories": [
             "lists"
         ],
         "translations": {

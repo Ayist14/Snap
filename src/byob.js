@@ -113,7 +113,7 @@ ADT_SlotMorph*/
 
 // Global stuff ////////////////////////////////////////////////////////
 
-modules.byob = '2026-August-13';
+modules.byob = '2026-November-10';
 
 // Declarations
 
@@ -476,9 +476,6 @@ CustomBlockDefinition.prototype.parseChoices = function (string) {
         } else {
             // support translating custom drop-downs by prefixing items w/ "$_"
             key = pair[0];
-            if (isString(key) && key.length > 2 && key.startsWith('$_')) {
-                key = localize(key.slice(2));
-            }
             val = pair[1];
             if (isString(val) && val.length > 2 && val.startsWith('$_')) {
                 val = [val.slice(2)];
@@ -489,8 +486,16 @@ CustomBlockDefinition.prototype.parseChoices = function (string) {
                         Object.keys(dict).filter(each => each.startsWith('~')
                     ).length + 1);
                 }
-                dict[key] = key;
+                if (isString(key) && key.length > 2 && key.startsWith('$_')) {
+                    key = key.slice(2);
+                    dict[localize(key)] = [key];
+                } else {
+                    dict[key] = key;
+                }
             } else {
+                if (isString(key) && key.length > 2 && key.startsWith('$_')) {
+                    key = localize(key.slice(2));
+                }
                 dict[key] = val;
             }
         }
@@ -2406,7 +2411,7 @@ CustomReporterBlockMorph.prototype.init = function (
         this.isTemplate = true;
     }
     this.category = definition.category;
-    this.reports = definition.reports;
+    this.reports = isPredicate ? 'Boolean' : definition.reports;
     this.storedTranslations = null; // transient - only for "wishes"
     this.variables = new VariableFrame();
     this.initializeVariables(definition.variableNames);
@@ -2425,7 +2430,7 @@ CustomReporterBlockMorph.prototype.reactToTemplateCopy =
 CustomReporterBlockMorph.prototype.refresh = function (aDefinition, offset) {
     var def = aDefinition || this.definition;
     CustomCommandBlockMorph.prototype.refresh.call(this, aDefinition, offset);
-    this.reports = def.reports;
+    this.reports = this.isPredicate ? 'Boolean' : def.reports;
     if (!this.isPrototype) {
         this.isPredicate = (def.type === 'predicate');
     }
@@ -3825,7 +3830,7 @@ BlockEditorMorph.prototype.context = function (prototypeHat) {
 };
 
 BlockEditorMorph.prototype.inferredReturnType = function (context) {
-    var script = context.expression,
+    var script = context?.expression,
         reportBlock,
         reportExpression,
         reportLiteral;
@@ -4215,11 +4220,15 @@ BlockLabelFragment.prototype.defTemplateSpecFragment = function () {
             suff = ' # = ' + this.defaultValue.toString();
         } else if (contains(['%mlt', '%code'], this.type)) {
             suff = ' \u00B6 = ' + this.defaultValue.toString(); // pilcrow
+        } else if (this.type === '%emoji') {
+            suff = ' :) = ';
         } else { // 'any' or 'text'
             suff = ' = ' + this.defaultValue.toString();
         }
     } else if (this.type === '%n') {
         suff = ' #';
+    } else if (this.type === '%emoji') {
+        suff = ' :)';
     } else if (contains(['%mlt', '%code'], this.type)) {
         suff = ' \u00B6'; // pilcrow
     }
@@ -4939,7 +4948,7 @@ InputSlotDialogMorph.prototype.createSlotTypeButtons = function () {
                 [
                     '%s', '%n', '%nUE', '%txt', '%anyUE', '%b', '%boolUE',
                     '%adt', '%mlt', '%code', '%upvar', '%parameter', '%clr',
-                    '%mult%adt'
+                    '%emoji', '%mult%adt'
                 ],
                 this.fragment.type
             )) {
@@ -4968,7 +4977,7 @@ InputSlotDialogMorph.prototype.createSlotTypeButtons = function () {
     defInput.refresh = () => {
         if (this.isExpanded && contains(
             ['%s', '%n', '%nUE', '%txt', '%anyUE', '%mlt', '%code', '%upvar',
-                '%parameter', '%adt', '%mult%adt'],
+                '%parameter', '%adt', '%mult%adt', '%emoji'],
             this.fragment.type
         )) {
             defInput.show();
@@ -5264,7 +5273,7 @@ InputSlotDialogMorph.prototype.addSlotsMenu = function () {
             on = '\u2611 ',
             off = '\u2610 ',
             isEditable = contains(
-                ['%s', '%n', '%txt', '%anyUE', '%mlt', '%code'],
+                ['%s', '%n', '%txt', '%anyUE', '%mlt', '%code', '%emoji'],
                 this.fragment.type
             );
         if (['%upvar', '%parameter'].includes(this.fragment.type)) {
@@ -5354,7 +5363,7 @@ InputSlotDialogMorph.prototype.addSlotsMenu = function () {
             (contains(
                 ['%mlt', '%code', '%obj', '%scriptVars', '%receive', '%send',
                     '%elseif', '%upvar', '%mult%upvar', '%parameter', '%adt',
-                    '%mult%parameter', '%mult%adt', '%nUE', '%p'],
+                    '%mult%parameter', '%mult%adt', '%nUE', '%p', '%emoji'],
                 this.fragment.type
             ) ? on : off) +
             localize('special'),
@@ -5405,6 +5414,7 @@ InputSlotDialogMorph.prototype.specialSlotsMenu = function () {
 
     addSpecialSlotType('multi-line', '%mlt');
     addSpecialSlotType('code', '%code');
+    addSpecialSlotType('emoji', '%emoji');
     addSpecialSlotType('number \u03BB', '%nUE');
     addSpecialSlotType('object', '%obj');
     addSpecialSlotType('process', '%p');

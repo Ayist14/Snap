@@ -62,11 +62,12 @@ isNil, WatcherMorph, List, ListWatcherMorph, alert, console, TableMorph, BLACK,
 TableFrameMorph, ColorSlotMorph, isSnapObject, newCanvas, Symbol, SVG_Costume,
 SnapExtensions, AlignmentMorph, TextMorph, Cloud, HatBlockMorph, InputSlotMorph,
 StagePickerMorph, CustomBlockDefinition, CommentMorph, BooleanSlotMorph, Color,
-CustomHatBlockMorph, SymbolMorph, MenuMorph, MorphicPreferences*/
+CustomHatBlockMorph, SymbolMorph, MenuMorph, MorphicPreferences,
+SpeechBubbleMorph*/
 
 /*jshint esversion: 11, bitwise: false, evil: true*/
 
-modules.threads = '2026-September-10';
+modules.threads = '2026-November-11';
 
 var ThreadManager;
 var Process;
@@ -816,6 +817,19 @@ Process.prototype.pauseStep = function () {
     if (this.context && this.context.startTime) {
         this.context.startTime = this.lastYield - this.pauseOffset;
     }
+};
+
+Process.prototype.rawCompute = function (timeout) {
+    // private - synchronously execute without yielding
+    // and return the final result. use with extreme caution
+    var deadline = (timeout ? Date.now() + timeout : null);
+    while (this.context) {
+        this.runStep();
+        if (this.context && deadline && (Date.now() > deadline)) {
+            throw new Error("a synchronous Snap! script has timed out");
+        }
+    }
+    return this.homeContext.inputs[0];
 };
 
 // Process GUI
@@ -4263,21 +4277,21 @@ Process.prototype.doGlide = function (secs, endX, endY) {
 // Process SAY and THINK primitives
 
 Process.prototype.bubble = function (data) {
-    if (data instanceof List && data.isADT()) {
+    if (data.isADT?.()) {
         return this.dynamicViewFor(data);
     }
     this.blockReceiver().bubble(data);
 };
 
 Process.prototype.doThink = function (data) {
-    if (data instanceof List && data.isADT()) {
+    if (data.isADT?.()) {
         return this.dynamicViewFor(data);
     }
     this.blockReceiver().doThink(data);
 };
 
 Process.prototype.doSayFor = function (data, secs) {
-    if (data instanceof List && data.isADT()) {
+    if (data.isADT?.()) {
         return this.dynamicViewFor(data);
     }
     if (!this.context.startTime) {
@@ -4293,7 +4307,7 @@ Process.prototype.doSayFor = function (data, secs) {
 };
 
 Process.prototype.doThinkFor = function (data, secs) {
-    if (data instanceof List && data.isADT()) {
+    if (data.isADT?.()) {
         return this.dynamicViewFor(data);
     }
     if (!this.context.startTime) {
@@ -5119,6 +5133,9 @@ Process.prototype.reportTypeOf = function (thing) {
         return 'text';
     }
     if (thing instanceof SpriteMorph) {
+        if (thing.isCorpse) {
+            return 'corpse';
+        }
         return 'sprite';
     }
     if (thing instanceof StageMorph) {
@@ -6317,6 +6334,30 @@ Process.prototype.toInputTextSyntax = function (list) {
 };
 
 // Process debugging
+
+Process.prototype.bubbleADT = function () {
+    // private / helper - display intermediate ADT results
+    // for visible steppingvinside a speech balloon
+    var anchor = this.context.inputs[0],
+        readout = this.context.inputs[1],
+        bubble;
+    if (readout instanceof Morph) {
+        bubble = new SpeechBubbleMorph(
+            readout,
+            null,
+            null,
+            0
+        );
+        bubble.popUp(
+            anchor.world(),
+            anchor.rightCenter(),
+            false // isClickable
+        );
+    } else {
+        anchor.showBubble(readout);
+    }
+    this.popContext();
+};
 
 Process.prototype.alert = function (data) {
     // debugging primitives only work in dev mode, otherwise they're nop
@@ -7618,6 +7659,7 @@ Process.prototype.reportGet = function (query) {
             );
         case 'processes':
             stage = thisObj.parentThatIsA(StageMorph);
+            stage.threads.removeTerminatedProcesses();
             return new List(stage ? stage.threads.processes : []);
         case 'solutions':
             if (thisObj.solution) {
@@ -7646,9 +7688,8 @@ Process.prototype.reportGet = function (query) {
                         (blocks, category) => blocks.concat(
                             thisObj.getPrimitiveTemplates(
                                 category
-                            ).filter(
-                                each => each instanceof BlockMorph &&
-                                    !(each instanceof HatBlockMorph)
+                            ).filter(each =>
+                                each instanceof BlockMorph
                             ).map(block => {
                                 let instance = block.fullCopy();
                                 instance.isTemplate = false;
@@ -8416,6 +8457,12 @@ Process.prototype.costumeNamed = function (name) {
     if (name instanceof Costume) {
         return name;
     }
+    if (name instanceof Context) {
+        name = name.toBlock();
+    }
+    if (name instanceof BlockMorph) {
+        return new Costume(name.scriptPic(), localize('block'));
+    }
     if (typeof name === 'number') {
         return this.blockReceiver().costumes.at(name);
     }
@@ -8584,23 +8631,36 @@ Process.prototype.returnValueToParentContext = function (value) {
             if (!anchor.world()) {
                 // find a place to display the result of custom reporters
                 anchor = target.expression;
-                if (!anchor.world || !anchor.world()) {
+                if (!anchor || !anchor.world || !anchor.world()) {
                     return;
                 }
             }
             if (value instanceof List) {
-                anchor.showBubble(
-                    value.isTable() ?
-                        new TableFrameMorph(new TableMorph(value))
-                        : new ListWatcherMorph(value),
-                    this.exportResult,
-                    this.receiver
-                );
+                if (value.isADT()) {
+                    // compute the ADT's dynamic view
+                    this.popContext();
+                    this.pushContext('bubbleADT');
+                    this.context.addInput(anchor);
+                    this.pushContext();
+                    this.evaluate(
+                        this.reportListItem('_morph', value)
+                    );
+                } else {
+                    anchor.showBubble(
+                        value.isTable() ?
+                            new TableFrameMorph(new TableMorph(value))
+                            : new ListWatcherMorph(value),
+                        false, // export pic
+                        this.receiver,
+                        false // clickable
+                    );
+                }
             } else {
                 anchor.showBubble(
                     value,
-                    this.exportResult,
-                    this.receiver
+                    false, // export pic
+                    this.receiver,
+                    false // clickable
                 );
             }
         }
@@ -9281,7 +9341,14 @@ Process.prototype.slotType = function (spec) {
         'basic#':       24, // spec
 
         '25':           25,
-        'basic$':       25 // spec
+        'basic$':       25, // spec
+
+        '26':           26,
+        'emoji':        26, // spec
+        // mnemonics:
+        ':)':           26,
+        ';)':           26,
+        ':D':           26
 
     }[key];
     if (num === undefined) {
@@ -9312,7 +9379,7 @@ Process.prototype.slotSpec = function (num) {
     spec = ['s', 'n', 'b', 'l', 'mlt', 'cs', 'cmdRing', 'repRing', 'predRing',
     'anyUE', 'boolUE', 'obj', 'upvar', 'clr', 'scriptVars', 'loop', 'receive',
     'send', 'elseif', 'parameter', 'adt', 'nUE', 'p', 'basic', 'basic#',
-    'basic$'][id];
+    'basic$', 'emoji'][id];
 
     if (spec === undefined) {
         return null;
@@ -10709,7 +10776,12 @@ VariableFrame.prototype.fork = function (names = []) {
     // answer a copy that only has entries for the given array of variable names
     // and only has values for primitive data.
     // used for including data dependencies in libraries.
-    var frame = new VariableFrame();
+    //
+    // Note: costumes and sounds can - currently - only be referenced directly
+    // by a dependent variable, not as part of a data structure (list) assigned
+    // to it, for reasons of data bloat in libraries.
+    var frame = new VariableFrame(),
+        types = ['text', 'number', 'Boolean', 'costume', 'sound'];
     this.names(true).forEach(vName => {
         var v, val, typ;
         if (names.includes(vName)) {
@@ -10718,7 +10790,7 @@ VariableFrame.prototype.fork = function (names = []) {
                 val = '';
             } else {
                 typ = Process.prototype.reportTypeOf(v.value);
-                if (['text', 'number', 'Boolean'].includes(typ) ||
+                if (types.includes(typ) ||
                     (v.value instanceof List &&
                         (v.value.canBeCSV() || v.value.canBeJSON()))
                 ) {

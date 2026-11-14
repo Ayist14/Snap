@@ -145,6 +145,10 @@
             "es": {
                 "name": "Listas",
                 "description": "Colección de funciones útiles para trabajar con listas y datos"
+            },
+            "zh_CN": {
+              "name": "列表处理库",
+              "description": "一组能够处理列表及其数据的积木"
             }
         }
     },
